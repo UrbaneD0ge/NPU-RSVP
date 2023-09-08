@@ -1,2 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  export let data;
+
+  $: ({ RSVPs } = data);
+</script>
+
+<h1>NPU Chairs Appreciation Dinner</h1>
+<p>RSVPs go here:</p>
+{#each RSVPs as RSVP}
+  <p>{RSVP.NPU}</p>
+  <p>{RSVP.ATTENDEE}</p>
+  <p>{RSVP.GUEST}</p>
+  <p>{RSVP.DIET}</p>
+{/each}
