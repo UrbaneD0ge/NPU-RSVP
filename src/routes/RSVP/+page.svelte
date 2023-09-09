@@ -1,16 +1,41 @@
 <script>
-  // export let data
+  export let data;
   export let form;
+
+  async function addRSVP(event) {
+    const formEl = event.target;
+    const data = new FormData(formEl);
+
+    console.dir(form);
+
+    const response = await fetch(formEl.action, {
+      method: 'POST',
+      body: data,
+    });
+    const responseData = await response.json();
+
+    form = responseData;
+
+    formEl.reset();
+
+    await invalidateAll();
+  }
 </script>
 
 <h1>RSVP Form</h1>
 
-<form method="post">
+<form method="POST">
   <label for="FNAME">FNAME</label>
-  <input type="text" name="FNAME" id="FNAME" />
+  {#if form?.missing}
+    <p>This field is required!</p>
+  {/if}
+  <input type="text" name="FNAME" id="FNAME" value={form?.RSVP ?? ''} />
   <br />
   <label for="LNAME">LNAME</label>
-  <input type="text" name="LNAME" id="LNAME" />
+  {#if form?.missing}
+    <p>This field is required!</p>
+  {/if}
+  <input type="text" name="LNAME" id="LNAME" value={form?.RSVP ?? ''} />
   <br />
   <label for="" />
   <button type="submit">SUBMIT</button>

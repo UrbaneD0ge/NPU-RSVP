@@ -1,16 +1,22 @@
-import { RSVPs } from '../../db/RSVPs.js'
-// import { RSVPs } from '../../models.RSVPs.js'
-/** @type {import('./$types').Actions} */
+import { fail } from "@sveltejs/kit";
+// import { addRSVP } from "$lib/index.js";
+
+function addRSVP() {
+  Request.RSVP = new RSVPs();
+}
 
 export const actions = {
-  default: async (event) => {
-    const data = await event.request.formData();
-    const FNAME = data.get('FNAME');
-    const LNAME = data.get('LNAME');
+  default: async ({ event }) => {
+    const formData = await Request.formData()
+    const RSVP = String(formData.get('RSVP'))
 
-    data = new RSVPs();
 
-    console.log(...data)
-    return { success: true };
+    if (!RSVP) {
+      return fail(400, { RSVP, missing: true })
+    }
+
+    addRSVP(RSVP)
+
+    return { success: true }
   }
 }
