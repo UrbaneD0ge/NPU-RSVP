@@ -1,22 +1,30 @@
-import { fail } from "@sveltejs/kit";
+import { error, fail, redirect } from "@sveltejs/kit";
+import { RSVPs } from '$db/RSVPs';
+import { getRequest, setResponse } from "@sveltejs/kit/node";
+
 // import { addRSVP } from "$lib/index.js";
 
-function addRSVP() {
-  Request.RSVP = new RSVPs();
-}
+// function addRSVP(RSVP) {
+//   Request.RSVP = new RSVPs();
+// }
 
 export const actions = {
-  default: async ({ event }) => {
-    const formData = await Request.formData()
-    const RSVP = String(formData.get('RSVP'))
+  default: async ({ request }) => {
+    const RSVP = await request.formData();
+    console.log(RSVP);
 
-
-    if (!RSVP) {
-      return fail(400, { RSVP, missing: true })
+    for (keys in RSVP) {
+      RSVP[keys] = body[keys]
+      return { success: true }
+    }
+    try {
+      RSVP = await RSVP.save()
+      redirect(200, '/')
+    }
+    catch {
+      // console.log(getRequest(RSVP));
+      return fail(500, { message: 'Failed to write to db.' })
     }
 
-    addRSVP(RSVP)
-
-    return { success: true }
   }
 }

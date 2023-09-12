@@ -1,4 +1,5 @@
 <script>
+  import { enhance } from '$app/forms';
   export let data;
   export let form;
 
@@ -37,7 +38,10 @@
   {/if}
   <input type="text" name="LNAME" id="LNAME" value={form?.RSVP ?? ''} />
   <br />
-  <label for="" />
+
+  {#if form?.error}
+    <p>{form.error}</p>
+  {/if}
   <button type="submit">SUBMIT</button>
 </form>
 
