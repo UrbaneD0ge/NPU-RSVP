@@ -2,12 +2,6 @@ import { error, fail, redirect } from "@sveltejs/kit";
 import { RSVPs } from '$db/RSVPs';
 import { getRequest, setResponse } from "@sveltejs/kit/node";
 
-// import { addRSVP } from "$lib/index.js";
-
-// function addRSVP(RSVP) {
-//   Request.RSVP = new RSVPs();
-// }
-
 export const actions = {
   default: async (event) => {
     // get form data
@@ -20,12 +14,20 @@ export const actions = {
     const NPU = data.get('NPU');
     const RSVPd = true
 
-    // write form data to database
-    await RSVPs.insertOne({ FNAME: FNAME, LNAME: LNAME, GUEST: GUEST, DIET: DIET, NPU: NPU, RSVPd: RSVPd });
+    try {
+      // write form data to database
+      // await RSVPs.insertOne({ FNAME: FNAME, LNAME: LNAME, GUEST: GUEST, DIET: DIET, NPU: NPU, RSVPd: RSVPd });
 
+      // write all form data to database
+      await RSVPs.insertOne({ ...data, RSVPd: RSVPd });
 
-    console.log(...RSVPs);
+      // redirect to success page
+      // TODO: create success page
 
-    return { success: true };
+      console.log(...RSVPs);
+      return { success: true };
+    } catch (err) {
+      return { error: err };
+    }
   }
-}
+};
