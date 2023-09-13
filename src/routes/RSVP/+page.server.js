@@ -18,14 +18,13 @@ export const actions = {
     const GUEST = data.get('GUEST');
     const DIET = data.get('DIET');
     const NPU = data.get('NPU');
-    const ATTENDED = data.get('ATTENDED');
-    const RSVPd = data.get('RSVPd');
+    const RSVPd = true
 
     // write form data to database
-    await RSVPs.insertOne({ FNAME, LNAME, GUEST, DIET, NPU, ATTENDED, RSVPd });
+    await RSVPs.insertOne({ FNAME: FNAME, LNAME: LNAME, GUEST: GUEST, DIET: DIET, NPU: NPU, RSVPd: RSVPd });
 
 
-    console.log(...data)
+    console.log(...RSVPs);
 
     return { success: true };
   }
