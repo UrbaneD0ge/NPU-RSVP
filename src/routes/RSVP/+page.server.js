@@ -9,22 +9,24 @@ import { getRequest, setResponse } from "@sveltejs/kit/node";
 // }
 
 export const actions = {
-  default: async ({ request }) => {
-    const RSVP = await request.formData();
-    console.log(RSVP);
+  default: async (event) => {
+    // get form data
+    const data = new FormData(event.target);
 
-    for (keys in RSVP) {
-      RSVP[keys] = body[keys]
-      return { success: true }
-    }
-    try {
-      RSVP = await RSVP.save()
-      redirect(200, '/')
-    }
-    catch {
-      // console.log(getRequest(RSVP));
-      return fail(500, { message: 'Failed to write to db.' })
-    }
+    const FNAME = data.get('FNAME');
+    const LNAME = data.get('LNAME');
+    const GUEST = data.get('GUEST');
+    const DIET = data.get('DIET');
+    const NPU = data.get('NPU');
+    const ATTENDED = data.get('ATTENDED');
+    const RSVPd = data.get('RSVPd');
 
+    // write form data to database
+    await RSVPs.insertOne({ FNAME, LNAME, GUEST, DIET, NPU, ATTENDED, RSVPd });
+
+
+    console.log(...data)
+
+    return { success: true };
   }
 }

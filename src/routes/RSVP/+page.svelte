@@ -24,8 +24,22 @@
 </script>
 
 <h1>RSVP Form</h1>
+<a href="/">Home</a>
 
-<form method="POST">
+{#if form?.error}
+  <p style="color: red;">{form.error}</p>
+{/if}
+
+<form method="post">
+  <label for="NPU">NPU</label>
+  <select name="NPU" id="NPU">
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+  </select>
+  <br />
   <label for="FNAME">FNAME</label>
   {#if form?.missing}
     <p>This field is required!</p>
@@ -39,9 +53,12 @@
   <input type="text" name="LNAME" id="LNAME" value={form?.RSVP ?? ''} />
   <br />
 
-  {#if form?.error}
-    <p>{form.error}</p>
-  {/if}
+  <label for="Guest">GUEST</label>
+  <input type="text" name="GUEST" id="GUEST" />
+  <br />
+  <label for="DIET">DIET</label>
+  <textarea name="DIET" id="DIET" />
+  <br />
   <button type="submit">SUBMIT</button>
 </form>
 

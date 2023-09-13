@@ -11,3 +11,16 @@ export async function load({ context }) {
     RSVPs: data,
   };
 };
+
+export const actions = {
+  delete: async (event) => {
+    // get form data
+    const data = new FormData(event.target);
+
+    const NPU = data.get('NPU');
+
+    // write form data to database
+    await RSVPs.deleteOne({ NPU });
+
+  }
+};

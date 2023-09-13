@@ -15,6 +15,9 @@
     <p>DIET: {RSVP.DIET}</p>
     <p>RSVP'd: {RSVP.RSVPd}</p>
     <p>ATTENDED: {RSVP.ATTENDED}</p>
+    <form action="?/delete" method="post">
+      <button>DELETE</button>
+    </form>
   </div>
 {/each}
 
