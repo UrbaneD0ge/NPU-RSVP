@@ -1,26 +1,43 @@
 <script>
   import { enhance } from '$app/forms';
-  export let data;
   export let form;
 
-  async function addRSVP(event) {
-    const formEl = event.target;
-    const data = new FormData(formEl);
-
-    console.dir(form);
-
-    const response = await fetch(formEl.action, {
-      method: 'POST',
-      body: data,
-    });
-    const responseData = await response.json();
-
-    form = responseData;
-
-    formEl.reset();
-
-    await invalidateAll();
-  }
+  // const form = enhance({
+  //   fields: {
+  //     NPU: {
+  //       type: 'text',
+  //       required: true,
+  //     },
+  //     FNAME: {
+  //       type: 'text',
+  //       required: true,
+  //     },
+  //     LNAME: {
+  //       type: 'text',
+  //       required: true,
+  //     },
+  //     GUEST: {
+  //       type: 'text',
+  //       required: false,
+  //     },
+  //     DIET: {
+  //       type: 'text',
+  //       required: false,
+  //     },
+  //   },
+  //   async onSubmit({ data }) {
+  //     const res = await fetch('/RSVP', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(data),
+  //     });
+  //     if (res.ok) {
+  //       return { success: true };
+  //     } else {
+  //       return { error: 'Something went wrong!' };
+  //     }
+  //   },
+  // });
 </script>
 
 <h1>RSVP Form</h1>
@@ -30,7 +47,7 @@
   <p style="color: red;">{form.error}</p>
 {/if}
 
-<form method="post">
+<form method="POST" use:enhance>
   <label for="NPU">NPU</label>
   <select name="NPU" id="NPU">
     <option value="A">A</option>

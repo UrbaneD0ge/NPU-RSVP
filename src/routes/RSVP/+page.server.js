@@ -3,28 +3,30 @@ import { RSVPs } from '$db/RSVPs';
 import { getRequest, setResponse } from "@sveltejs/kit/node";
 
 export const actions = {
-  default: async (event) => {
-    // get form data
-    const data = new FormData(event.target);
+  default: async ({ request }) => {
+    // get formData
+    const data = await request.formData();
 
-    const FNAME = data.get('FNAME');
-    const LNAME = data.get('LNAME');
-    const GUEST = data.get('GUEST');
-    const DIET = data.get('DIET');
+    // get NPU from formData
     const NPU = data.get('NPU');
-    const RSVPd = true
+    const RSVPd = true;
+
+    // console.log('Data:' + JSON.stringify(data));
+
+    // prepare data for database
+    const RSVP = {
+      NPU,
+      FNAME: data.get('FNAME'),
+      LNAME: data.get('LNAME'),
+      GUEST: data.get('GUEST'),
+      // ATTENDED: data.get('ATTENDED'),
+      RSVPd: RSVPd,
+      DIET: data.get('DIET')
+    };
 
     try {
-      // write form data to database
-      // await RSVPs.insertOne({ FNAME: FNAME, LNAME: LNAME, GUEST: GUEST, DIET: DIET, NPU: NPU, RSVPd: RSVPd });
-
-      // write all form data to database
-      await RSVPs.insertOne({ ...data, RSVPd: RSVPd });
-
-      // redirect to success page
-      // TODO: create success page
-
-      console.log(...RSVPs);
+      // write formData to database
+      await RSVPs.insertOne({ ...RSVP });
       return { success: true };
     } catch (err) {
       return { error: err };
