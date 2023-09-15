@@ -13,9 +13,10 @@
   <p style="color: red;">{form.error}</p>
 {/if}
 
-<form action="save" method="PUT" use:enhance>
+<form method="PUT" use:enhance>
   <h3>NPU: {RSVPs.NPU}</h3>
   <input type="hidden" name="NPU" id="NPU" value={RSVPs.NPU} />
+  <input type="hidden" value={RSVPs._id} />
   <br />
   <label for="FNAME">FNAME</label>
   {#if form?.missing}
@@ -36,7 +37,8 @@
   <label for="DIET">DIET</label>
   <textarea name="DIET" id="DIET" value={RSVPs.DIET ?? ''} />
   <br />
-  <button type="save">SAVE</button>
+
+  <button type="save" action="?/default">SAVE</button>
 </form>
 
 {#if form?.success}

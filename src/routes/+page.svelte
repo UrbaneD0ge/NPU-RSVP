@@ -20,7 +20,7 @@
       <th>DELETE</th>
     </tr>
   </thead>
-  {#each RSVPs as RSVP}
+  {#each RSVPs as RSVP (RSVP._id)}
     <tr>
       <td class="data-center"><strong>{RSVP.NPU}</strong></td>
       <td>{RSVP.FNAME} {RSVP.LNAME}</td>
@@ -29,7 +29,7 @@
       <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
       <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
       <td class="data-center">
-        <a href="/{RSVP.NPU}"> <button id="edit">EDIT</button></a>
+        <a href="/{RSVP._id}"> <button id="edit">EDIT</button></a>
       </td>
       <td class="data-center">
         <form action="?/delete" method="POST">

@@ -1,8 +1,9 @@
 import { RSVPs } from '$db/RSVPs';
+import { ObjectId } from 'mongodb';
 
 export async function load({ url }) {
   // get all RSVP data from db
-  const data = await RSVPs.findOne({ NPU: url.pathname[1] });
+  const data = await RSVPs.findOne({ _id: url.pathname });
   console.log(data);
 
   return {
@@ -11,11 +12,12 @@ export async function load({ url }) {
 };
 
 export const actions = {
-  save: async ({ request }) => {
+  default: async ({ request }) => {
     // get form data
     const data = await request.formData();
 
-    const NPU = data.get('NPU');
+    const ID = data.get('_id');
+    console.log('id', ID);
 
     const RSVP = {
       NPU: NPU,
@@ -28,10 +30,15 @@ export const actions = {
 
     try {
       // put updated form data to database
-      await RSVPs.updateOne({ NPU }, { $set: { FNAME, LNAME, GUEST, DIET } });
+      await RSVPs.update({
+        _id: ObjectId(RSVP._id)
+      }, { $set: { FNAME, LNAME, GUEST, DIET } });
+
+      console.log('RSVP', RSVP);
 
       return {
         status: 303,
+        body: RSVP,
         headers: {
           location: '/'
         }
