@@ -22,18 +22,18 @@
   </thead>
   {#each RSVPs as RSVP}
     <tr>
-      <td><strong>{RSVP.NPU}</strong></td>
+      <td class="data-center"><strong>{RSVP.NPU}</strong></td>
       <td>{RSVP.FNAME} {RSVP.LNAME}</td>
       <td>{RSVP.GUEST || '-'}</td>
       <td>{RSVP.DIET || '-'}</td>
-      <td>{RSVP.RSVPd ? '✅' : '❌'}</td>
-      <td>{RSVP.ATTENDED ? '✅' : '❌'}</td>
-      <td>
+      <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
+      <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
+      <td class="data-center">
         <form action="?/edit" method="POST">
           <button>EDIT</button>
         </form>
       </td>
-      <td>
+      <td class="data-center">
         <form action="?/delete" method="POST">
           <button>DELETE</button>
         </form></td
@@ -48,9 +48,18 @@
     margin: 0;
   }
 
+  table {
+    border-collapse: collapse;
+  }
+
   td {
     padding: 0.1svw;
   }
+
+  .data-center {
+    text-align: center;
+  }
+
   tr:nth-child(even) {
     background-color: rgb(236, 236, 236);
   }
