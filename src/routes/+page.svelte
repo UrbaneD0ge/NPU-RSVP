@@ -5,7 +5,7 @@
 </script>
 
 <h1>NPU Chairs Appreciation Dinner</h1>
-<a href="/RSVP">RSVP</a>
+<a href="/RSVP">RSVP</a> | <a href="/checkin">Check In</a>
 <p>RSVPs go here:</p>
 {#each RSVPs as RSVP}
   <div>

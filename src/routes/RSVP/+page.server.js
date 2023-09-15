@@ -8,18 +8,14 @@ export const actions = {
     const data = await request.formData();
 
     // get NPU from formData
-    const NPU = data.get('NPU');
     const RSVPd = true;
-
-    // console.log('Data:' + JSON.stringify(data));
 
     // prepare data for database
     const RSVP = {
-      NPU,
+      NPU: data.get('NPU'),
       FNAME: data.get('FNAME'),
       LNAME: data.get('LNAME'),
       GUEST: data.get('GUEST'),
-      // ATTENDED: data.get('ATTENDED'),
       RSVPd: RSVPd,
       DIET: data.get('DIET')
     };

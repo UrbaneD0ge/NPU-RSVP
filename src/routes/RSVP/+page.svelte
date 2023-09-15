@@ -41,7 +41,7 @@
 </script>
 
 <h1>RSVP Form</h1>
-<a href="/">Home</a>
+<a href="/">Roster</a> | <a href="/checkin">Check In</a>
 
 {#if form?.error}
   <p style="color: red;">{form.error}</p>
