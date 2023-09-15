@@ -16,8 +16,8 @@ export const actions = {
       FNAME: data.get('FNAME'),
       LNAME: data.get('LNAME'),
       GUEST: data.get('GUEST'),
-      RSVPd: RSVPd,
-      DIET: data.get('DIET')
+      DIET: data.get('DIET'),
+      RSVPd: RSVPd
     };
 
     try {

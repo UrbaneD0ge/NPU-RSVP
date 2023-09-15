@@ -1,43 +1,6 @@
 <script>
   import { enhance } from '$app/forms';
   export let form;
-
-  // const form = enhance({
-  //   fields: {
-  //     NPU: {
-  //       type: 'text',
-  //       required: true,
-  //     },
-  //     FNAME: {
-  //       type: 'text',
-  //       required: true,
-  //     },
-  //     LNAME: {
-  //       type: 'text',
-  //       required: true,
-  //     },
-  //     GUEST: {
-  //       type: 'text',
-  //       required: false,
-  //     },
-  //     DIET: {
-  //       type: 'text',
-  //       required: false,
-  //     },
-  //   },
-  //   async onSubmit({ data }) {
-  //     const res = await fetch('/RSVP', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(data),
-  //     });
-  //     if (res.ok) {
-  //       return { success: true };
-  //     } else {
-  //       return { error: 'Something went wrong!' };
-  //     }
-  //   },
-  // });
 </script>
 
 <h1>RSVP Form</h1>

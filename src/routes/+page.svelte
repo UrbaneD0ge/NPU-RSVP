@@ -29,9 +29,7 @@
       <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
       <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
       <td class="data-center">
-        <form action="?/edit" method="POST">
-          <button>EDIT</button>
-        </form>
+        <a href="/{RSVP.NPU}"> <button id="edit">EDIT</button></a>
       </td>
       <td class="data-center">
         <form action="?/delete" method="POST">
@@ -54,6 +52,7 @@
 
   td {
     padding: 0.1svw;
+    padding-inline: 0.5vw;
   }
 
   .data-center {
