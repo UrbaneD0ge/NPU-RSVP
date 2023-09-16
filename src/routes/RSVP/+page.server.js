@@ -1,6 +1,5 @@
 import { error, fail, redirect } from "@sveltejs/kit";
 import { RSVPs } from '$db/RSVPs';
-import { getRequest, setResponse } from "@sveltejs/kit/node";
 
 export const actions = {
   default: async ({ request }) => {

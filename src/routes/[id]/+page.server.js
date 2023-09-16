@@ -2,8 +2,9 @@ import { RSVPs } from '$db/RSVPs';
 import { ObjectId } from 'mongodb';
 
 export async function load({ url }) {
+  const ID = url.pathname.slice(1);
   // get all RSVP data from db
-  const data = await RSVPs.findOne({ _id: url.pathname });
+  const data = await RSVPs.findOne({ _id: new ObjectId(ID) });
   console.log(data);
 
   return {
@@ -20,7 +21,7 @@ export const actions = {
     console.log('id', ID);
 
     const RSVP = {
-      NPU: NPU,
+      NPU: data.get('NPU'),
       FNAME: data.get('FNAME'),
       LNAME: data.get('LNAME'),
       GUEST: data.get('GUEST'),
@@ -31,7 +32,7 @@ export const actions = {
     try {
       // put updated form data to database
       await RSVPs.update({
-        _id: ObjectId(RSVP._id)
+        _id: new ObjectId(RSVP._id)
       }, { $set: { FNAME, LNAME, GUEST, DIET } });
 
       console.log('RSVP', RSVP);
