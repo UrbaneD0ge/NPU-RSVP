@@ -4,9 +4,6 @@
   $: ({ RSVPs } = data);
 </script>
 
-<h1>NPU Chairs Appreciation Dinner</h1>
-<a href="/RSVP">RSVP</a> | <a href="/checkin">Check In</a>
-<p>RSVPs go here:</p>
 <table width="100%" border="1px solid black">
   <thead>
     <tr>
@@ -29,7 +26,7 @@
       <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
       <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
       <td class="data-center">
-        <a href="/{RSVP._id}"> <button id="edit">EDIT</button></a>
+        <a href="/{RSVP._id}"> <button type="button" id="edit">EDIT</button></a>
       </td>
       <td class="data-center">
         <form action="?/delete" method="POST">

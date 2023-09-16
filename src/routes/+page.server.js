@@ -17,9 +17,9 @@ export const actions = {
     // get form data
     const data = new FormData(event.target);
 
-    const NPU = data.get('NPU');
+    const ID = data.get('_id');
 
     // write form data to database
-    await RSVPs.deleteOne({ NPU });
+    await RSVPs.deleteOne({ _id: ID });
   }
 };

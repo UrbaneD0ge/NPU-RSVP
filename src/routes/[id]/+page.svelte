@@ -16,7 +16,7 @@
 <form method="POST" use:enhance>
   <h3>NPU: {RSVPs.NPU}</h3>
   <input type="hidden" name="NPU" id="NPU" value={RSVPs.NPU} />
-  <input type="hidden" value={RSVPs._id} />
+  <input type="hidden" value={String(RSVPs._id)} />
   <br />
   <label for="FNAME">FNAME</label>
   {#if form?.missing}
@@ -38,7 +38,7 @@
   <textarea name="DIET" id="DIET" value={RSVPs.DIET ?? ''} />
   <br />
 
-  <button type="submit" action="?/default">SAVE</button>
+  <button type="submit">SAVE</button>
 </form>
 
 {#if form?.success}

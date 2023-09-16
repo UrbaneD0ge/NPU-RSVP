@@ -31,9 +31,9 @@ export const actions = {
 
     try {
       // put updated form data to database
-      await RSVPs.update({
+      await RSVPs.save({
         _id: new ObjectId(RSVP._id)
-      }, { $set: { FNAME, LNAME, GUEST, DIET } });
+      }, { $set: { RSVP } });
 
       console.log('RSVP', RSVP);
 
