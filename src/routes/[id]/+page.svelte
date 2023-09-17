@@ -6,55 +6,83 @@
   $: ({ RSVPs } = data);
 </script>
 
-<h1>Edit RSVP</h1>
+<svelte:head>
+  <title>Edit RSVP</title>
+</svelte:head>
 
 {#if form?.error}
   <p style="color: red;">{form.error}</p>
 {/if}
 
-<form method="POST" use:enhance>
-  <h3>NPU: {RSVPs.NPU}</h3>
-  <input type="hidden" name="NPU" id="NPU" value={RSVPs.NPU} />
-  <input type="hidden" name="_id" id="_id" value={RSVPs._id} />
-  <br />
-  <label for="FNAME">First:</label>
-  {#if form?.missing}
-    <p>This field is required!</p>
-  {/if}
-  <input type="text" name="FNAME" id="FNAME" value={RSVPs.FNAME ?? ''} />
-  <br />
-  <label for="LNAME">Last:</label>
-  {#if form?.missing}
-    <p>This field is required!</p>
-  {/if}
-  <input type="text" name="LNAME" id="LNAME" value={RSVPs.LNAME ?? ''} />
-  <br />
+<div class="card">
+  <form method="POST" use:enhance>
+    <h3>NPU: {RSVPs.NPU}</h3>
+    <input type="hidden" name="NPU" id="NPU" value={RSVPs.NPU} />
+    <input type="hidden" name="_id" id="_id" value={RSVPs._id} />
 
-  <label for="GUEST">The name of your Guest:</label>
-  <input type="text" name="GUEST" id="GUEST" value={RSVPs.GUEST ?? ''} />
-  <br />
-  <label for="DIET"
-    >Please inform us of any allergies or dietary restrictions:</label
-  >
-  <textarea name="DIET" id="DIET" value={RSVPs.DIET ?? ''} />
-  <br />
+    <label for="FNAME">First:</label>
+    {#if form?.missing}
+      <p>This field is required!</p>
+    {/if}
+    <input type="text" name="FNAME" id="FNAME" value={RSVPs.FNAME ?? ''} />
 
-  <button type="submit">SAVE</button>
-</form>
+    <label for="LNAME">Last:</label>
+    {#if form?.missing}
+      <p>This field is required!</p>
+    {/if}
+    <input type="text" name="LNAME" id="LNAME" value={RSVPs.LNAME ?? ''} />
+
+    <label for="GUEST">The name of your Guest:</label>
+    <input type="text" name="GUEST" id="GUEST" value={RSVPs.GUEST ?? ''} />
+
+    <label for="DIET"
+      >Please inform us of any allergies or dietary restrictions:</label
+    >
+    <textarea name="DIET" id="DIET" value={RSVPs.DIET ?? ''} />
+
+    <button type="submit">SAVE</button>
+  </form>
+</div>
 
 {#if form?.success}
   <p>RSVP submitted successfully!</p>
 {/if}
 
 <style>
+  .card {
+    background-color: rgb(255, 255, 255, 0.55);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  button {
+    width: 100%;
+    height: 2rem;
+    font-size: 1.4rem;
+    /* scrollbar narrow */
+  }
   form {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 80%;
     margin: 0 auto;
   }
   input,
   textarea {
     margin-bottom: 1rem;
+    height: 2rem;
+    font-size: 1.2rem;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  h3 {
+    height: 3rem;
+    font-size: 2rem;
+    margin: 0;
   }
 </style>

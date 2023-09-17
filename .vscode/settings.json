@@ -3,5 +3,8 @@
     "activityBar.background": "#0C3606",
     "titleBar.activeBackground": "#114B09",
     "titleBar.activeForeground": "#F3FDF1"
-  }
+  },
+  "cSpell.words": [
+    "checkin"
+  ]
 }
