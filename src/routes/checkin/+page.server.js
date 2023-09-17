@@ -26,7 +26,7 @@ export const actions = {
     // get RSVP id from form data
     const RSVPid = data.get('_id');
 
-    // get RSVP status from form and coerce to boolean
+    // get ATTENDED status from form and coerce to boolean
     let rsvpStatus = data.get('ATTENDED');
     rsvpStatus = rsvpStatus === 'true' ? true : false;
     // console.log('From Form: ', rsvpStatus);

@@ -9,6 +9,10 @@
 </svelte:head>
 
 <div class="container">
+  <h2>
+    RSVPs: {RSVPs.length} | Attended: {RSVPs.filter((r) => r.ATTENDED).length} |
+    Not Attended: {RSVPs.filter((r) => !r.ATTENDED).length}
+  </h2>
   <table width="100%" border="1px solid black">
     <thead>
       <tr>
@@ -55,6 +59,12 @@
   a:visited {
     color: #aeaeae !important;
   }
+
+  h2 {
+    text-align: center;
+    font-weight: 200;
+  }
+
   table {
     border-collapse: collapse;
     border: 1px solid black;

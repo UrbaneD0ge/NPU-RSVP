@@ -1,10 +1,17 @@
 import { Error } from 'mongoose';
 import { RSVPs } from '$db/RSVPs';
 import { ObjectId } from 'mongodb';
-import { Redirect_1 } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
 export async function load({ url }) {
   const ID = url.pathname.slice(1);
+  // if path is not a valid ObjectId, redirect to 404
+  if (!ObjectId.isValid(ID)) {
+    return {
+      status: 303,
+      redirect: '/error'
+    };
+  }
   // get all RSVP data from db
   const data = await RSVPs.findOne({ _id: new ObjectId(ID) });
   // console.log(data);
@@ -27,10 +34,8 @@ export const actions = {
       LNAME: data.get('LNAME'),
       GUEST: data.get('GUEST'),
       DIET: data.get('DIET'),
-      RSVPd: true,
+      RSVPd: data.get('RSVPd')
     };
-    // console.log(structuredClone(RSVP));
-    // console.log(RSVPid);
 
     try {
       // put updated form data to database

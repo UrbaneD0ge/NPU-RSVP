@@ -48,21 +48,27 @@
     {#if form?.missing}
       <p>This field is required!</p>
     {/if}
-    <input type="text" name="FNAME" id="FNAME" value={form?.RSVP ?? ''} />
+    <input type="text" name="FNAME" id="FNAME" required />
 
     <label for="LNAME">Last:</label>
     {#if form?.missing}
       <p>This field is required!</p>
     {/if}
-    <input type="text" name="LNAME" id="LNAME" value={form?.RSVP ?? ''} />
+    <input type="text" name="LNAME" id="LNAME" required />
 
-    <label for="Guest">The name of your Guest:</label>
+    <label for="GUEST">The name of your Guest:</label>
     <input type="text" name="GUEST" id="GUEST" />
 
     <label for="DIET"
       >Please inform us of any allergies or dietary restrictions:</label
     >
     <textarea name="DIET" id="DIET" />
+
+    <label for="RSVPd">Will you be attending?</label>
+    <select name="RSVPd" id="RSVPd">
+      <option value="true">Yes, I plan to attend!</option>
+      <option value="false">Regrets, I won't be able to join.</option>
+    </select>
 
     <button type="submit">SUBMIT</button>
   </form>
@@ -93,6 +99,7 @@
     margin: 0 auto;
   }
   input,
+  select,
   textarea {
     margin-bottom: 1rem;
     height: 2rem;
