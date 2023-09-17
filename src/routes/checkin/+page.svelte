@@ -2,6 +2,7 @@
   export let data;
   export let form;
   export let notCheckedIn;
+  import { enhance } from '$app/forms';
 
   $: ({ RSVPs, notCheckedIn } = data);
 </script>
@@ -23,7 +24,7 @@
         <p>DIET:{RSVP.DIET || ''}</p>
         <p>RSVP'd:{RSVP.RSVPd ? '✅' : '❌'}</p>
         <p>ATTENDED:{RSVP.ATTENDED ? '✅' : '❌'}</p>
-        <form action="?/checkIn" method="POST">
+        <form action="?/checkIn" method="POST" use:enhance>
           <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
           <input type="hidden" name="_id" value={RSVP._id} />
           <button type="submit">Check In</button>
@@ -43,7 +44,7 @@
         <p>DIET:{RSVP.DIET || ''}</p>
         <p>RSVP'd:{RSVP.RSVPd ? '✅' : '❌'}</p>
         <p>ATTENDED:{RSVP.ATTENDED ? '✅' : '❌'}</p>
-        <form action="?/checkIn" method="POST">
+        <form action="?/checkIn" method="POST" use:enhance>
           <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
           <input type="hidden" name="_id" value={RSVP._id} />
           <button type="submit">Undo</button>

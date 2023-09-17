@@ -29,14 +29,14 @@ export const actions = {
     // get RSVP status from form and coerce to boolean
     let rsvpStatus = data.get('ATTENDED');
     rsvpStatus = rsvpStatus === 'true' ? true : false;
-    console.log('From Form: ', rsvpStatus);
+    // console.log('From Form: ', rsvpStatus);
     // flip RSVP status for check-in
 
     try {
       rsvpStatus = !rsvpStatus;
 
       await RSVPs.updateOne({ _id: new ObjectId(RSVPid) }, { $set: { ATTENDED: rsvpStatus } })
-        .then(Response => console.log('to DB: ', rsvpStatus))
+        // .then(Response => console.log('to DB: ', rsvpStatus))
         .catch(error => console.error(`Failed to update RSVP: ${error}`));
 
       return {
