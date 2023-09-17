@@ -20,12 +20,8 @@
         <p>RSVP'd:{RSVP.RSVPd ? '✅' : '❌'}</p>
         <p>ATTENDED:{RSVP.ATTENDED ? '✅' : '❌'}</p>
         <form action="?/checkIn" method="POST">
-          <input
-            type="hidden"
-            name="ATTENDED"
-            value={RSVPs.ATTENDED || false}
-          />
-          <input type="hidden" name="_id" value={RSVPs._id || false} />
+          <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED || false} />
+          <input type="hidden" name="_id" value={RSVP._id} />
           <button type="submit">Check In</button>
         </form>
       </div>
@@ -44,12 +40,8 @@
         <p>RSVP'd:{RSVP.RSVPd ? '✅' : '❌'}</p>
         <p>ATTENDED:{RSVP.ATTENDED ? '✅' : '❌'}</p>
         <form action="?/checkIn" method="POST">
-          <input
-            type="hidden"
-            name="ATTENDED"
-            value={RSVPs.ATTENDED || false}
-          />
-          <input type="hidden" name="_id" value={RSVPs._id} />
+          <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
+          <input type="hidden" name="_id" value={RSVP._id} />
           <button type="submit">Undo</button>
         </form>
       </div>

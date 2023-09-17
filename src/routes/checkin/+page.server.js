@@ -24,12 +24,12 @@ export const actions = {
     const data = await request.formData();
 
     const RSVPid = data.get('_id');
-    let rsvpStatus = !data.get('ATTENDED');
+    let rsvpStatus = data.get('ATTENDED');
     console.log(rsvpStatus);
 
     try {
       // for that RSVP, set ATTENDED to true
-      await RSVPs.updateOne({ _id: new ObjectId(RSVPid) }, { $set: { ATTENDED: rsvpStatus } })
+      await RSVPs.updateOne({ _id: new ObjectId(RSVPid) }, { $set: { ATTENDED: !rsvpStatus } })
         .then(Response => console.log(Response))
         .catch(error => console.error(`Failed to update RSVP: ${error}`));
 
