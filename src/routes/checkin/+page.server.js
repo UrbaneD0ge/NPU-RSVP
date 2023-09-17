@@ -9,7 +9,7 @@ export async function load({ context }) {
   // console.log(data);
 
   // get the number of RSVPs not yet checked in
-  const notCheckedIn = data.filter(rsvp => !rsvp.ATTENDED).length;
+  const notCheckedIn = data.filter(rsvp => rsvp.ATTENDED == false).length;
 
   // console.log(notCheckedIn);
 
@@ -23,14 +23,20 @@ export const actions = {
     // get form data
     const data = await request.formData();
 
+    // get RSVP id from form data
     const RSVPid = data.get('_id');
+
+    // get RSVP status from form and coerce to boolean
     let rsvpStatus = data.get('ATTENDED');
-    console.log(rsvpStatus);
+    rsvpStatus = rsvpStatus === 'true' ? true : false;
+    console.log('From Form: ', rsvpStatus);
+    // flip RSVP status for check-in
 
     try {
-      // for that RSVP, set ATTENDED to true
-      await RSVPs.updateOne({ _id: new ObjectId(RSVPid) }, { $set: { ATTENDED: !rsvpStatus } })
-        .then(Response => console.log(Response))
+      rsvpStatus = !rsvpStatus;
+
+      await RSVPs.updateOne({ _id: new ObjectId(RSVPid) }, { $set: { ATTENDED: rsvpStatus } })
+        .then(Response => console.log('to DB: ', rsvpStatus))
         .catch(error => console.error(`Failed to update RSVP: ${error}`));
 
       return {

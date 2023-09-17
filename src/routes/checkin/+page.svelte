@@ -1,5 +1,6 @@
 <script>
   export let data;
+  export let form;
   export let notCheckedIn;
 
   $: ({ RSVPs, notCheckedIn } = data);
@@ -9,9 +10,12 @@
 <h2>
   Attendees Arrived: {RSVPs.length - notCheckedIn} | Attendees Not Arrived: {notCheckedIn}
 </h2>
+{#if form?.message && form?.message !== ''}
+  <p>{form.message}</p>
+{/if}
 <div class="container">
   {#each RSVPs as RSVP (RSVP._id)}
-    {#if !RSVP.ATTENDED}
+    {#if RSVP.ATTENDED == false}
       <div class="card expected">
         <p>NPU:<strong>{RSVP.NPU}</strong></p>
         <p>ATTENDEE:{RSVP.FNAME} {RSVP.LNAME}</p>
@@ -20,7 +24,7 @@
         <p>RSVP'd:{RSVP.RSVPd ? '✅' : '❌'}</p>
         <p>ATTENDED:{RSVP.ATTENDED ? '✅' : '❌'}</p>
         <form action="?/checkIn" method="POST">
-          <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED || false} />
+          <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
           <input type="hidden" name="_id" value={RSVP._id} />
           <button type="submit">Check In</button>
         </form>
@@ -31,7 +35,7 @@
 <hr />
 <div class="container">
   {#each RSVPs as RSVP (RSVP._id)}
-    {#if RSVP.ATTENDED}
+    {#if RSVP.ATTENDED == true}
       <div class="card arrived">
         <p>NPU:<strong>{RSVP.NPU}</strong></p>
         <p>ATTENDEE:{RSVP.FNAME} {RSVP.LNAME}</p>
