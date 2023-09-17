@@ -36,8 +36,7 @@ export const actions = {
       return {
         success: true,
         status: 303,
-        message: 'Guest checked in successfully',
-        body: { ATTENDED: rsvpStatus }
+        message: 'Guest checked in successfully'
       };
     }
     catch (err) {
