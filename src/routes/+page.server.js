@@ -1,4 +1,5 @@
 import { RSVPs } from '$db/RSVPs';
+import { ObjectId } from 'mongodb';
 
 export async function load({ context }) {
 
@@ -13,13 +14,22 @@ export async function load({ context }) {
 };
 
 export const actions = {
-  delete: async (event) => {
+  delete: async ({ request }) => {
     // get form data
-    const data = new FormData(event.target);
+    const data = await request.formData();
+    console.log(data);
 
-    const ID = data.get('_id');
+    // get ID from form data
+    const RSVPid = data.get('_id');
+    console.log(new ObjectId(RSVPid));
 
     // write form data to database
-    await RSVPs.deleteOne({ _id: ID });
+    await RSVPs.deleteOne({ _id: new ObjectId(RSVPid) })
+      .then(Response => {
+        console.log(Response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };

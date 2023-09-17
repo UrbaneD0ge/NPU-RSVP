@@ -26,10 +26,13 @@
       <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
       <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
       <td class="data-center">
-        <a href="/{RSVP._id}"> <button type="button" id="edit">EDIT</button></a>
+        <a href="/{RSVP._id}">
+          <button type="button" id="edit">EDIT</button>
+        </a>
       </td>
       <td class="data-center">
-        <form action="?/delete" method="POST">
+        <form action="?/delete" method="post">
+          <input type="hidden" name="_id" value={RSVP._id} />
           <button>DELETE</button>
         </form></td
       >
@@ -38,13 +41,17 @@
 </table>
 
 <style>
-  p {
-    padding: 2px 10px;
-    margin: 0;
+  a {
+    /* change visited link color */
+    color: #aeaeae;
   }
 
+  a:visited {
+    color: #aeaeae !important;
+  }
   table {
     border-collapse: collapse;
+    border: 1px solid black;
   }
 
   td {
@@ -57,6 +64,6 @@
   }
 
   tr:nth-child(even) {
-    background-color: rgb(236, 236, 236);
+    background-color: rgba(255, 255, 255, 0.3);
   }
 </style>

@@ -1,11 +1,12 @@
 import { RSVPs } from '$db/RSVPs';
+import { ObjectId } from 'mongodb';
 
 export async function load({ context }) {
 
   // get all RSVP data from db
   const data = await RSVPs.find().sort({ NPU: 'asc' }).toArray();
-  // const data = await NPUs.find();
-  console.log(data);
+
+  // console.log(data);
 
   // get the number of RSVPs not yet checked in
   const notCheckedIn = data.filter(rsvp => !rsvp.ATTENDED).length;
@@ -18,20 +19,34 @@ export async function load({ context }) {
 };
 
 export const actions = {
-  checkIn: async (event) => {
+  checkIn: async ({ request }) => {
     // get form data
-    const data = new FormData(event.target);
+    const data = await request.formData();
 
-    const ID = data.get('_id');
+    const RSVPid = data.get('_id');
+    let rsvpStatus = !data.get('ATTENDED');
+    console.log(rsvpStatus);
 
-    // This is just like that youtube tutorial I watched - something about useOptimisticResponse
     try {
       // for that RSVP, set ATTENDED to true
-      await RSVPs.updateOne({ ID }, { $set: { ATTENDED: true } });
-      return { success: true };
+      await RSVPs.updateOne({ _id: new ObjectId(RSVPid) }, { $set: { ATTENDED: rsvpStatus } })
+        .then(Response => console.log(Response))
+        .catch(error => console.error(`Failed to update RSVP: ${error}`));
+
+      return {
+        success: true,
+        status: 303,
+        message: 'Guest checked in successfully',
+        body: { ATTENDED: rsvpStatus }
+      };
     }
     catch (err) {
-      return { error: err };
+      console.error(`Failed to update RSVP: ${err}`);
+      return {
+        status: 500,
+        error: JSON.stringify(err),
+        message: JSON.stringify(Error)
+      };
     }
   }
 };

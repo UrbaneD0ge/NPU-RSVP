@@ -41,23 +41,25 @@
     <option value="Z">Z</option>
   </select>
   <br />
-  <label for="FNAME">FNAME</label>
+  <label for="FNAME">First:</label>
   {#if form?.missing}
     <p>This field is required!</p>
   {/if}
   <input type="text" name="FNAME" id="FNAME" value={form?.RSVP ?? ''} />
   <br />
-  <label for="LNAME">LNAME</label>
+  <label for="LNAME">Last:</label>
   {#if form?.missing}
     <p>This field is required!</p>
   {/if}
   <input type="text" name="LNAME" id="LNAME" value={form?.RSVP ?? ''} />
   <br />
 
-  <label for="Guest">GUEST</label>
+  <label for="Guest">The name of your Guest:</label>
   <input type="text" name="GUEST" id="GUEST" />
   <br />
-  <label for="DIET">DIET</label>
+  <label for="DIET"
+    >Please inform us of any allergies or dietary restrictions:</label
+  >
   <textarea name="DIET" id="DIET" />
   <br />
   <button type="submit">SUBMIT</button>
@@ -66,3 +68,17 @@
 {#if form?.success}
   <p>RSVP submitted successfully!</p>
 {/if}
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
+  }
+  input,
+  textarea {
+    margin-bottom: 1rem;
+    height: 2rem;
+  }
+</style>

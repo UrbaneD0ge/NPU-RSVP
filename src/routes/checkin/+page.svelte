@@ -6,8 +6,9 @@
 </script>
 
 <h1>Check In</h1>
-<a href="/">Roster</a> | <a href="/RSVP">RSVP</a>
-<h2>Attendees Not Arrived: {notCheckedIn}</h2>
+<h2>
+  Attendees Arrived: {RSVPs.length - notCheckedIn} | Attendees Not Arrived: {notCheckedIn}
+</h2>
 {#each RSVPs as RSVP (RSVP._id)}
   {#if !RSVP.ATTENDED}
     <div class="expected">
@@ -19,12 +20,16 @@
       <p>RSVP'd: {RSVP.RSVPd ? '✅' : '❌'}</p>
       <p>ATTENDED: {RSVP.ATTENDED ? '✅' : '❌'}</p>
       <form action="?/checkIn" method="POST">
-        <button>Check In</button>
+        <input type="hidden" name="ATTENDED" value={RSVPs.ATTENDED || false} />
+        <input type="hidden" name="_id" value={RSVPs._id || false} />
+        <button type="submit">Check In</button>
       </form>
     </div>
-  {:else}
-    <br />
-    <hr />
+  {/if}
+{/each}
+<hr />
+{#each RSVPs as RSVP (RSVP._id)}
+  {#if RSVP.ATTENDED}
     <div class="arrived">
       <p>ID: {RSVP._id}</p>
       <p>NPU: {RSVP.NPU}</p>
@@ -33,6 +38,11 @@
       <p>DIET: {RSVP.DIET || ''}</p>
       <p>RSVP'd: {RSVP.RSVPd ? '✅' : '❌'}</p>
       <p>ATTENDED: {RSVP.ATTENDED ? '✅' : '❌'}</p>
+      <form action="?/checkIn" method="POST">
+        <input type="hidden" name="ATTENDED" value={RSVPs.ATTENDED || false} />
+        <input type="hidden" name="_id" value={RSVPs._id} />
+        <button type="submit">Undo</button>
+      </form>
     </div>
   {/if}
 {/each}

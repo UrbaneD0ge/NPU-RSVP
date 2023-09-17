@@ -1,11 +1,13 @@
+import { Error } from 'mongoose';
 import { RSVPs } from '$db/RSVPs';
 import { ObjectId } from 'mongodb';
+import { Redirect_1 } from '@sveltejs/kit';
 
 export async function load({ url }) {
   const ID = url.pathname.slice(1);
   // get all RSVP data from db
   const data = await RSVPs.findOne({ _id: new ObjectId(ID) });
-  console.log(data);
+  // console.log(data);
 
   return {
     RSVPs: JSON.parse(JSON.stringify(data)),
@@ -17,8 +19,7 @@ export const actions = {
     // get form data
     const data = await request.formData();
 
-    const ID = data.get('_id');
-    console.log('id', ID);
+    const RSVPid = data.get('_id');
 
     const RSVP = {
       NPU: data.get('NPU'),
@@ -26,28 +27,30 @@ export const actions = {
       LNAME: data.get('LNAME'),
       GUEST: data.get('GUEST'),
       DIET: data.get('DIET'),
-      RSVPd: true
+      RSVPd: true,
     };
+    // console.log(structuredClone(RSVP));
+    // console.log(RSVPid);
 
     try {
       // put updated form data to database
-      await RSVPs.save({
-        _id: new ObjectId(RSVP._id)
-      }, { $set: { RSVP } });
-
-      console.log('RSVP', RSVP);
+      await RSVPs.updateOne({ _id: new ObjectId(RSVPid) },
+        { $set: RSVP })
+        .then(Response => console.log(Response))
+        .catch(error => console.error(`Failed to update RSVP: ${error}`));
 
       return {
         status: 303,
-        body: RSVP,
-        headers: {
-          location: '/'
-        }
+        message: 'RSVP updated successfully',
+        success: true,
+        body: RSVP
       };
-    } catch (err) {
+    } catch (error) {
+      console.error(`Failed to update RSVP: ${error}`);
       return {
         status: 500,
-        body: err
+        error: JSON.stringify(error),
+        message: JSON.stringify(Error)
       };
     }
   }

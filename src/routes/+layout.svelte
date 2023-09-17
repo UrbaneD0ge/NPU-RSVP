@@ -15,10 +15,13 @@
 
 <style>
   nav {
-    background-color: #333;
     color: #fff;
     padding: 5px;
     margin-bottom: 2svh;
+  }
+
+  a:visited {
+    color: #fff;
   }
 
   nav ul {
