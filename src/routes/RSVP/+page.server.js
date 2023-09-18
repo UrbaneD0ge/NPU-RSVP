@@ -25,13 +25,14 @@ export const actions = {
     try {
       // write formData to database
       await RSVPs.insertOne({ ...RSVP });
-      throw redirect(308, '/success');
     } catch (err) {
       return {
+        redirect: '/',
         status: 500,
         error: JSON.stringify(error),
         message: JSON.stringify(error)
       };
     }
+    throw redirect(303, '/success');
   }
 };
