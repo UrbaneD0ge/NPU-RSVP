@@ -70,9 +70,15 @@
     border: 1px solid black;
   }
 
+  th {
+    /* text-decoration: inherit !important; */
+    font-weight: 500;
+  }
+
   td {
     padding: 0.1svw;
     padding-inline: 0.5vw;
+    font-weight: 200;
   }
 
   .container {

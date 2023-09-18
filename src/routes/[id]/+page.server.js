@@ -51,7 +51,6 @@ export const actions = {
         body: RSVP
       };
     } catch (error) {
-      console.error(`Failed to update RSVP: ${error}`);
       return {
         status: 500,
         error: JSON.stringify(error),

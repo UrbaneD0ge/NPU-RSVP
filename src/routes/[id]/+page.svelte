@@ -40,6 +40,12 @@
     >
     <textarea name="DIET" id="DIET" value={RSVPs.DIET ?? ''} />
 
+    <label for="RSVPd">Will you be attending?</label>
+    <select name="RSVPd" id="RSVPd" required>
+      <option value="true">Yes, I plan to attend!</option>
+      <option value="false">Regrets, I won't be able to join.</option>
+    </select>
+
     <button type="submit">SAVE</button>
   </form>
 </div>
@@ -70,10 +76,17 @@
     margin: 0 auto;
   }
   input,
+  select,
   textarea {
     margin-bottom: 1rem;
     height: 2rem;
     font-size: 1.2rem;
+    border-radius: 8px;
+  }
+
+  button,
+  select {
+    border-radius: 8px;
   }
 
   textarea {

@@ -3,7 +3,7 @@
   export let form;
   export let notCheckedIn;
   import { enhance } from '$app/forms';
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
 
   $: ({ RSVPs, notCheckedIn } = data);
 </script>
@@ -31,7 +31,7 @@
     {#if Boolean(RSVP.ATTENDED) === false}
       <div class="expected">
         <form action="?/checkIn" method="POST" use:enhance>
-          <button class="card" type="submit">
+          <button class="card" type="submit" in:fly out:fly>
             <p>NPU:</p>
             <h6><strong>{RSVP.NPU}</strong></h6>
             <p>ATTENDEE:</p>
@@ -40,11 +40,13 @@
             <p>GUEST:</p>
             <h6>{RSVP.GUEST || ''}</h6>
 
-            <p>RSVP'd:</p>
-            <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+            <div class="bools">
+              <p>RSVP'd:</p>
+              <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
-            <p>ATTENDED:</p>
-            <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              <p>ATTENDED:</p>
+              <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+            </div>
 
             <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
             <input type="hidden" name="_id" value={RSVP._id} />
@@ -60,7 +62,7 @@
     {#if Boolean(RSVP.ATTENDED) === true}
       <div class="arrived">
         <form action="?/checkIn" method="POST" use:enhance>
-          <button class="card" type="submit">
+          <button class="card" type="submit" in:fly out:fly>
             <p>NPU:</p>
             <h6><strong>{RSVP.NPU}</strong></h6>
 
@@ -70,11 +72,13 @@
             <p>GUEST:</p>
             <h6>{RSVP.GUEST || ''}</h6>
 
-            <p>RSVP'd:</p>
-            <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+            <div class="bools">
+              <p>RSVP'd:</p>
+              <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
-            <p>ATTENDED:</p>
-            <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              <p>ATTENDED:</p>
+              <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+            </div>
 
             <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
             <input type="hidden" name="_id" value={RSVP._id} />
@@ -88,6 +92,14 @@
 <style>
   .arrived {
     color: grey;
+  }
+
+  .bools {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 2fr;
+    /* transpose grid */
+    grid-auto-flow: column;
   }
 
   .card {
