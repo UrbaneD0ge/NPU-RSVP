@@ -28,13 +28,17 @@ export const actions = {
 
     const RSVPid = data.get('_id');
 
+    // get RSVP status from form and coerce to boolean
+    let rsvpStatus = data.get('RSVPd');
+    rsvpStatus = rsvpStatus === 'true' ? true : false;
+
     const RSVP = {
       NPU: data.get('NPU'),
       FNAME: data.get('FNAME'),
       LNAME: data.get('LNAME'),
       GUEST: data.get('GUEST'),
       DIET: data.get('DIET'),
-      RSVPd: data.get('RSVPd')
+      RSVPd: rsvpStatus
     };
 
     try {
@@ -43,13 +47,6 @@ export const actions = {
         { $set: RSVP })
         .then(Response => console.log(Response))
         .catch(error => console.error(`Failed to update RSVP: ${error}`));
-
-      return {
-        status: 303,
-        message: 'RSVP updated successfully',
-        success: true,
-        body: RSVP
-      };
     } catch (error) {
       return {
         status: 500,
@@ -57,5 +54,6 @@ export const actions = {
         message: JSON.stringify(Error)
       };
     }
-  }
+    throw redirect(303, '/');
+  },
 };

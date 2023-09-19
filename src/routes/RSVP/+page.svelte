@@ -73,9 +73,6 @@
     <button type="submit">SUBMIT</button>
   </form>
 </div>
-{#if form?.success}
-  <p>RSVP submitted successfully!</p>
-{/if}
 
 <style>
   .card {
