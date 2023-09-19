@@ -10,9 +10,15 @@
 
 <div class="container">
   <h2>
-    RSVPs: {RSVPs.length} | Attended: {RSVPs.filter((r) => r.ATTENDED).length} |
-    Not Attended: {RSVPs.filter((r) => !r.ATTENDED).length}
+    RSVPs: {RSVPs.length}<br />
+    Accepted: {RSVPs.filter((r) => r.RSVPd).length} | Regrets: {RSVPs.filter(
+      (r) => !r.RSVPd
+    ).length}
+    || Attended: {RSVPs.filter((r) => r.ATTENDED).length} | Not Attended: {RSVPs.filter(
+      (r) => !r.ATTENDED
+    ).length}
   </h2>
+
   <table width="100%" border="1px solid black">
     <thead>
       <tr>
@@ -42,9 +48,9 @@
         <td class="data-center">
           <form action="?/delete" method="post">
             <input type="hidden" name="_id" value={RSVP._id} />
-            <button>DELETE</button>
-          </form></td
-        >
+            <button id="DELETE">DELETE</button>
+          </form>
+        </td>
       </tr>
     {/each}
   </table>
