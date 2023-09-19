@@ -1,34 +1,39 @@
 <div class="card">
   <h1>We'll see you there!</h1>
 
-  <p>When:</p>
-  <h4>
-    Thursday, November 9<sup>th,</sup> 2023<br /> 6 o'Clock in the Evening
-  </h4>
+  <div>
+    <p>When:</p>
+    <h4>
+      Thursday, November 9<sup>th,</sup> 2023<br /> 6 o'Clock in the Evening
+    </h4>
+  </div>
 
-  <p>Where:</p>
-  <h4>1234 Peachtree St, Atlanta</h4>
-  <p>No parking available, take MARTA</p>
+  <div>
+    <p>Where:</p>
+    <h4>1234 Peachtree St, Atlanta</h4>
+    <p>No parking available, take MARTA</p>
+  </div>
 
-  <p>Attire:</p>
-  <h4>Black Tie</h4>
+  <div>
+    <p>Attire:</p>
+    <h4>Black Tie</h4>
+  </div>
+  <a
+    target="_blank"
+    href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MjN1dG1ocWc0dDExdmM4NTdjN2x2cnAxNW0ga2lwZHVubGFwY29hQG0&amp;tmsrc=kipdunlapcoa%40gmail.com"
+    ><img
+      alt="Add to Google Calendar"
+      border="0"
+      src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"
+    /></a
+  >
 </div>
-
-<a
-  target="_blank"
-  href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MjN1dG1ocWc0dDExdmM4NTdjN2x2cnAxNW0ga2lwZHVubGFwY29hQG0&amp;tmsrc=kipdunlapcoa%40gmail.com"
-  ><img
-    alt="Add to Google Calendar"
-    border="0"
-    src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"
-  /></a
->
 
 <style>
   h1 {
     text-align: center;
     font-weight: 500;
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 
   h4 {
@@ -36,6 +41,11 @@
     font-weight: 400;
     font-size: 1.5rem;
     margin: 0;
+  }
+
+  a img {
+    margin: 2svh;
+    border-radius: 5px;
   }
 
   p {
@@ -55,5 +65,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
   }
 </style>

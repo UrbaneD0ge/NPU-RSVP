@@ -10,7 +10,8 @@
 
 <div class="container">
   <h2>
-    RSVPs: {RSVPs.length}<br />
+    RSVPs: {RSVPs.length} || Individuals: {RSVPs.length +
+      RSVPs.filter((r) => r.GUEST).length}<br />
     Accepted: {RSVPs.filter((r) => r.RSVPd).length} | Regrets: {RSVPs.filter(
       (r) => !r.RSVPd
     ).length}

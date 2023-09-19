@@ -20,7 +20,7 @@
   h1 {
     text-align: center;
     font-weight: 500;
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 
   h4 {
