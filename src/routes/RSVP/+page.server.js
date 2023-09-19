@@ -33,6 +33,11 @@ export const actions = {
         message: JSON.stringify(error)
       };
     }
-    throw redirect(303, '/success');
+
+    if (rsvpStatus == true) {
+      throw redirect(303, '/success');
+    } else {
+      throw redirect(303, '/declined');
+    }
   }
 };
