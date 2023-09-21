@@ -1,6 +1,7 @@
-import { Schema, model } from "mongoose";
+import { model } from "mongoose";
 
 const RSVPSchema = new mongoose.Schema({
+  PLUS: Boolean,
   NPU: String,
   FNAME: String,
   LNAME: String,

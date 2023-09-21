@@ -22,9 +22,16 @@ export const actions = {
       ATTENDED: false
     };
 
+    const Guest = {
+      NPU: data.get('NPU'),
+      GUEST: data.get('GUEST'),
+      RSVPd: rsvpStatus,
+      ATTENDED: false
+    };
+
     try {
       // write formData to database
-      await RSVPs.insertOne({ ...RSVP });
+      await RSVPs.insertMany([{ ...RSVP }, { ...Guest }]);
     } catch (err) {
       return {
         redirect: '/',
