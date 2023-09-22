@@ -16,18 +16,34 @@ export const actions = {
       NPU: data.get('NPU'),
       FNAME: data.get('FNAME').trim(),
       LNAME: data.get('LNAME').trim(),
-      GUEST: data.get('GUEST'),
-      DIET: data.get('DIET'),
+      GUEST: data.get('GUEST').trim(),
+      DIET: data.get('DIET').trim(),
       RSVPd: rsvpStatus,
       ATTENDED: false
     };
 
+    console.log(RSVP)
+
+    // const Guest = {
+    //   NPU: data.get('NPU'),
+    //   GUEST: data.get('GUEST'),
+    //   RSVPd: rsvpStatus,
+    //   ATTENDED: false
+    // };
+
     try {
-      // write formData to database
-      await RSVPs.insertOne({ ...RSVP });
+
+      if (RSVP.GUEST != '') {
+        // write formData to database
+        await RSVPs.insertMany([{ ...RSVP, PLUSONE: false }, { ...RSVP, PLUSONE: true }]);
+        console.log('Plus One RSVPd');
+      } else {
+        await RSVPs.insertOne({ ...RSVP });
+        console.log('Single RSVPd');
+      }
+
     } catch (err) {
       return {
-        redirect: '/',
         status: 500,
         error: JSON.stringify(error),
         message: JSON.stringify(error)

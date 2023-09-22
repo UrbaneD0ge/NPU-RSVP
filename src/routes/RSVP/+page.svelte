@@ -2,6 +2,7 @@
   import { enhance } from '$app/forms';
   // get query params
   export let form;
+  let ROLE;
 </script>
 
 <svelte:head>
@@ -56,8 +57,19 @@
     {/if}
     <input type="text" name="LNAME" id="LNAME" required />
 
-    <label for="GUEST">The name of your Guest:</label>
-    <input type="text" name="GUEST" id="GUEST" />
+    <label for="ROLE">Are you RSVP'ing as a(n):</label>
+    <select name="ROLE" id="ROLE" bind:value={ROLE}>
+      <option selected disabled />
+      <option value="Chair">NPU Chair</option>
+      <option value="Officer">NPU Officer</option>
+      <option value="CM">City Council Member or staff</option>
+    </select>
+
+    <!-- only show GUEST field if ROLE is Chair -->
+    {#if ROLE == 'Chair'}
+      <label for="GUEST">The name of your Guest:</label>
+      <input type="text" name="GUEST" id="GUEST" />
+    {/if}
 
     <label for="DIET"
       >Please inform us of any allergies or dietary restrictions:</label

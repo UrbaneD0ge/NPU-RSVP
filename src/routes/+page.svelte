@@ -34,25 +34,27 @@
       </tr>
     </thead>
     {#each RSVPs as RSVP (RSVP._id)}
-      <tr>
-        <td class="data-center"><strong>{RSVP.NPU}</strong></td>
-        <td>{RSVP.FNAME} {RSVP.LNAME}</td>
-        <td>{RSVP.GUEST || '-'}</td>
-        <td>{RSVP.DIET || '-'}</td>
-        <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
-        <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
-        <td class="data-center">
-          <a href="/{RSVP._id}">
-            <button type="button" id="edit">EDIT</button>
-          </a>
-        </td>
-        <td class="data-center">
-          <form action="?/delete" method="post">
-            <input type="hidden" name="_id" value={RSVP._id} />
-            <button id="DELETE">DELETE</button>
-          </form>
-        </td>
-      </tr>
+      {#if RSVP.PLUSONE === false}
+        <tr>
+          <td class="data-center"><strong>{RSVP.NPU}</strong></td>
+          <td>{RSVP.FNAME} {RSVP.LNAME}</td>
+          <td>{RSVP.GUEST || '-'}</td>
+          <td>{RSVP.DIET || '-'}</td>
+          <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
+          <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
+          <td class="data-center">
+            <a href="/{RSVP._id}">
+              <button type="button" id="edit">EDIT</button>
+            </a>
+          </td>
+          <td class="data-center">
+            <form action="?/delete" method="post">
+              <input type="hidden" name="_id" value={RSVP._id} />
+              <button id="DELETE">DELETE</button>
+            </form>
+          </td>
+        </tr>
+      {/if}
     {/each}
   </table>
 </div>

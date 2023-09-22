@@ -22,37 +22,79 @@
   <!-- Fade out after 5 seconds -->
   {setTimeout(() => {
     form.message = '';
-  }, 5000)}
-  <p id="formMessage" transition:fade>{form.message}</p>
+  }, 2500)}
+  <p id="formMessage" transition:fade={{ duration: 1000 }}>{form.message}</p>
 {/if}
 
 <div class="container">
   {#each RSVPs as RSVP (RSVP._id)}
     {#if Boolean(RSVP.ATTENDED) === false}
-      <div class="expected">
-        <form action="?/checkIn" method="POST" use:enhance>
-          <button class="card" type="submit" in:fly out:fly>
-            <p>NPU:</p>
-            <h6><strong>{RSVP.NPU}</strong></h6>
-            <p>ATTENDEE:</p>
-            <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
+      {#if RSVP.PLUSONE === false}
+        <div class="expected">
+          <form action="?/checkIn" method="POST" use:enhance>
+            <button class="card" type="submit" in:fly out:fly>
+              <div>
+                <p>NPU:</p>
+                <h6><strong>{RSVP.NPU}</strong></h6>
+              </div>
 
-            <p>GUEST:</p>
-            <h6>{RSVP.GUEST || ''}</h6>
+              <div>
+                <p>ATTENDEE:</p>
+                <h4>{RSVP.FNAME} {RSVP.LNAME}</h4>
+              </div>
 
-            <div class="bools">
-              <p>RSVP'd:</p>
-              <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+              <div>
+                <p>GUEST:</p>
+                <h6>{RSVP.GUEST || ''}</h6>
+              </div>
 
-              <p>ATTENDED:</p>
-              <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
-            </div>
+              <div class="bools">
+                <p>RSVP'd:</p>
+                <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
-            <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
-            <input type="hidden" name="_id" value={RSVP._id} />
-          </button>
-        </form>
-      </div>
+                <p>ATTENDED:</p>
+                <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              </div>
+
+              <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
+              <input type="hidden" name="_id" value={RSVP._id} />
+            </button>
+          </form>
+        </div>
+      {/if}
+      {#if RSVP.PLUSONE === true}
+        <div class="expected">
+          <form action="?/checkIn" method="POST" use:enhance>
+            <button class="card" type="submit" in:fly out:fly>
+              <div>
+                <p>NPU:</p>
+                <h6><strong>{RSVP.NPU}</strong></h6>
+              </div>
+
+              <div>
+                <p>GUEST:</p>
+                <h4>{RSVP.GUEST || ''}</h4>
+              </div>
+
+              <div>
+                <p>GUEST OF:</p>
+                <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
+              </div>
+
+              <div class="bools">
+                <p>RSVP'd:</p>
+                <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+
+                <p>ATTENDED:</p>
+                <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              </div>
+
+              <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
+              <input type="hidden" name="_id" value={RSVP._id} />
+            </button>
+          </form>
+        </div>
+      {/if}
     {/if}
   {/each}
 </div>
@@ -60,31 +102,72 @@
 <div class="container">
   {#each RSVPs as RSVP (RSVP._id)}
     {#if Boolean(RSVP.ATTENDED) === true}
-      <div class="arrived">
-        <form action="?/checkIn" method="POST" use:enhance>
-          <button class="card" type="submit" in:fly out:fly>
-            <p>NPU:</p>
-            <h6><strong>{RSVP.NPU}</strong></h6>
+      {#if RSVP.PLUSONE === false}
+        <div class="arrived">
+          <form action="?/checkIn" method="POST" use:enhance>
+            <button class="card" type="submit" in:fly out:fly>
+              <div>
+                <p>NPU:</p>
+                <h6><strong>{RSVP.NPU}</strong></h6>
+              </div>
 
-            <p>ATTENDEE:</p>
-            <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
+              <div>
+                <p>ATTENDEE:</p>
+                <h4>{RSVP.FNAME} {RSVP.LNAME}</h4>
+              </div>
 
-            <p>GUEST:</p>
-            <h6>{RSVP.GUEST || ''}</h6>
+              <div>
+                <p>GUEST:</p>
+                <h6>{RSVP.GUEST || ''}</h6>
+              </div>
 
-            <div class="bools">
-              <p>RSVP'd:</p>
-              <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+              <div class="bools">
+                <p>RSVP'd:</p>
+                <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
-              <p>ATTENDED:</p>
-              <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
-            </div>
+                <p>ATTENDED:</p>
+                <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              </div>
 
-            <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
-            <input type="hidden" name="_id" value={RSVP._id} />
-          </button>
-        </form>
-      </div>
+              <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
+              <input type="hidden" name="_id" value={RSVP._id} />
+            </button>
+          </form>
+        </div>
+      {/if}
+      {#if RSVP.PLUSONE === true}
+        <div class="arrived">
+          <form action="?/checkIn" method="POST" use:enhance>
+            <button class="card" type="submit" in:fly out:fly>
+              <div>
+                <p>NPU:</p>
+                <h6><strong>{RSVP.NPU}</strong></h6>
+              </div>
+
+              <div>
+                <p>GUEST:</p>
+                <h4>{RSVP.GUEST || ''}</h4>
+              </div>
+
+              <div>
+                <p>GUEST OF:</p>
+                <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
+              </div>
+
+              <div class="bools">
+                <p>RSVP'd:</p>
+                <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+
+                <p>ATTENDED:</p>
+                <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              </div>
+
+              <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
+              <input type="hidden" name="_id" value={RSVP._id} />
+            </button>
+          </form>
+        </div>
+      {/if}
     {/if}
   {/each}
 </div>
@@ -101,6 +184,11 @@
     grid-template-rows: 2fr 2fr;
     /* transpose grid */
     grid-auto-flow: column;
+  }
+
+  .bools h6 {
+    display: grid;
+    align-items: start;
   }
 
   .card {
@@ -136,6 +224,12 @@
     font-weight: 200;
   }
 
+  h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+  }
+
   h6 {
     margin: 0;
     padding: 0;
@@ -143,7 +237,7 @@
   }
 
   p {
-    padding: 5px;
+    padding: 0;
     margin: 0;
   }
 
