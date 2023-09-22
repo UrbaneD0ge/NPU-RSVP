@@ -29,30 +29,58 @@
 <div class="container">
   {#each RSVPs as RSVP (RSVP._id)}
     {#if Boolean(RSVP.ATTENDED) === false}
-      <div class="expected">
-        <form action="?/checkIn" method="POST" use:enhance>
-          <button class="card" type="submit" in:fly out:fly>
-            <p>NPU:</p>
-            <h6><strong>{RSVP.NPU}</strong></h6>
-            <p>ATTENDEE:</p>
-            <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
+      {#if RSVP.PLUSONE === false}
+        <div class="expected">
+          <form action="?/checkIn" method="POST" use:enhance>
+            <button class="card" type="submit" in:fly out:fly>
+              <p>NPU:</p>
+              <h6><strong>{RSVP.NPU}</strong></h6>
+              <p>ATTENDEE:</p>
+              <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
 
-            <p>GUEST:</p>
-            <h6>{RSVP.GUEST || ''}</h6>
+              <p>GUEST:</p>
+              <h6>{RSVP.GUEST || ''}</h6>
 
-            <div class="bools">
-              <p>RSVP'd:</p>
-              <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+              <div class="bools">
+                <p>RSVP'd:</p>
+                <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
-              <p>ATTENDED:</p>
-              <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
-            </div>
+                <p>ATTENDED:</p>
+                <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              </div>
 
-            <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
-            <input type="hidden" name="_id" value={RSVP._id} />
-          </button>
-        </form>
-      </div>
+              <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
+              <input type="hidden" name="_id" value={RSVP._id} />
+            </button>
+          </form>
+        </div>
+      {/if}
+      {#if RSVP.PLUSONE === true}
+        <div class="expected">
+          <form action="?/checkIn" method="POST" use:enhance>
+            <button class="card" type="submit" in:fly out:fly>
+              <p>NPU:</p>
+              <h6><strong>{RSVP.NPU}</strong></h6>
+              <p>ATTENDEE:</p>
+              <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
+
+              <p>GUEST:</p>
+              <h6>{RSVP.GUEST || ''}</h6>
+
+              <div class="bools">
+                <p>RSVP'd:</p>
+                <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
+
+                <p>ATTENDED:</p>
+                <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
+              </div>
+
+              <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
+              <input type="hidden" name="_id" value={RSVP._id} />
+            </button>
+          </form>
+        </div>
+      {/if}
     {/if}
   {/each}
 </div>
