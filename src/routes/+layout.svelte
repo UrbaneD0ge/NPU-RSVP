@@ -7,7 +7,7 @@
   {#if $page.route.id !== '/RSVP'}
     <ul>
       {#if $page.route.id !== '/'}
-        <li><a href="/">Roster</a></li>
+        <li><a href="/">Invitation</a></li>
       {/if}
       {#if $page.route.id !== '/checkin'}
         <li><a href="/checkin">Check In</a></li>
