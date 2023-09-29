@@ -16,8 +16,8 @@ export const actions = {
       NPU: data.get('NPU'),
       FNAME: data.get('FNAME').trim(),
       LNAME: data.get('LNAME').trim(),
-      GUEST: data.get('GUEST').trim(),
-      DIET: data.get('DIET').trim(),
+      GUEST: data.get('GUEST')?.trim(),
+      DIET: data.get('DIET')?.trim(),
       RSVPd: rsvpStatus,
       ATTENDED: false
     };

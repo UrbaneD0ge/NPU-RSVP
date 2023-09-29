@@ -10,8 +10,8 @@
 
 <div class="container">
   <h2>
-    RSVPs: {RSVPs.length} || Individuals: {RSVPs.length +
-      RSVPs.filter((r) => r.GUEST).length}<br />
+    RSVPs: {RSVPs.length} || PlusOnes: {RSVPs.filter((r) => r.PLUSONE)
+      .length}<br />
     Accepted: {RSVPs.filter((r) => r.RSVPd).length} | Regrets: {RSVPs.filter(
       (r) => !r.RSVPd
     ).length}
@@ -38,6 +38,26 @@
         <tr>
           <td class="data-center"><strong>{RSVP.NPU}</strong></td>
           <td>{RSVP.FNAME} {RSVP.LNAME}</td>
+          <td>{RSVP.GUEST || '-'}</td>
+          <td>{RSVP.DIET || '-'}</td>
+          <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
+          <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
+          <td class="data-center">
+            <a href="/{RSVP._id}">
+              <button type="button" id="edit">EDIT</button>
+            </a>
+          </td>
+          <td class="data-center">
+            <form action="?/delete" method="post">
+              <input type="hidden" name="_id" value={RSVP._id} />
+              <button id="DELETE">DELETE</button>
+            </form>
+          </td>
+        </tr>
+      {:else}
+        <tr>
+          <td class="data-center"><strong>{RSVP.NPU}</strong></td>
+          <td>- - </td>
           <td>{RSVP.GUEST || '-'}</td>
           <td>{RSVP.DIET || '-'}</td>
           <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
