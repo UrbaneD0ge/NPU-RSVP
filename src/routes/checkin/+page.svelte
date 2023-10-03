@@ -30,9 +30,9 @@
   {#each RSVPs as RSVP (RSVP._id)}
     {#if Boolean(RSVP.ATTENDED) === false}
       {#if RSVP.PLUSONE === false}
-        <div class="expected">
+        <div class="expected" transition:fly={{ duration: 1800 }}>
           <form action="?/checkIn" method="POST" use:enhance>
-            <button class="card" type="submit" in:fly out:fly>
+            <button class="card" type="submit">
               <div>
                 <p>NPU:</p>
                 <h6><strong>{RSVP.NPU}</strong></h6>
@@ -43,18 +43,20 @@
                 <h4>{RSVP.FNAME} {RSVP.LNAME}</h4>
               </div>
 
-              <div>
-                <p>GUEST:</p>
-                <h6>{RSVP.GUEST || ''}</h6>
-              </div>
+              {#if RSVP.GUEST}
+                <div>
+                  <p>GUEST:</p>
+                  <h6>{RSVP.GUEST || ''}</h6>
+                </div>
+              {/if}
 
-              <div class="bools">
+              <!-- <div class="bools">
                 <p>RSVP'd:</p>
                 <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
                 <p>ATTENDED:</p>
                 <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
-              </div>
+              </div> -->
 
               <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
               <input type="hidden" name="_id" value={RSVP._id} />
@@ -63,9 +65,9 @@
         </div>
       {/if}
       {#if RSVP.PLUSONE === true}
-        <div class="expected">
+        <div class="expected" transition:fly={{ duration: 1800 }}>
           <form action="?/checkIn" method="POST" use:enhance>
-            <button class="card" type="submit" in:fly out:fly>
+            <button class="card" type="submit">
               <div>
                 <p>NPU:</p>
                 <h6><strong>{RSVP.NPU}</strong></h6>
@@ -81,13 +83,13 @@
                 <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
               </div>
 
-              <div class="bools">
+              <!-- <div class="bools">
                 <p>RSVP'd:</p>
                 <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
                 <p>ATTENDED:</p>
                 <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
-              </div>
+              </div> -->
 
               <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
               <input type="hidden" name="_id" value={RSVP._id} />
@@ -103,9 +105,9 @@
   {#each RSVPs as RSVP (RSVP._id)}
     {#if Boolean(RSVP.ATTENDED) === true}
       {#if RSVP.PLUSONE === false}
-        <div class="arrived">
+        <div class="arrived" transition:fly={{ duration: 1800 }}>
           <form action="?/checkIn" method="POST" use:enhance>
-            <button class="card" type="submit" in:fly out:fly>
+            <button class="card" type="submit">
               <div>
                 <p>NPU:</p>
                 <h6><strong>{RSVP.NPU}</strong></h6>
@@ -116,18 +118,20 @@
                 <h4>{RSVP.FNAME} {RSVP.LNAME}</h4>
               </div>
 
-              <div>
-                <p>GUEST:</p>
-                <h6>{RSVP.GUEST || ''}</h6>
-              </div>
+              {#if RSVP.GUEST}
+                <div>
+                  <p>GUEST:</p>
+                  <h6>{RSVP.GUEST || ''}</h6>
+                </div>
+              {/if}
 
-              <div class="bools">
+              <!-- <div class="bools">
                 <p>RSVP'd:</p>
                 <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
                 <p>ATTENDED:</p>
                 <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
-              </div>
+              </div> -->
 
               <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
               <input type="hidden" name="_id" value={RSVP._id} />
@@ -136,9 +140,9 @@
         </div>
       {/if}
       {#if RSVP.PLUSONE === true}
-        <div class="arrived">
+        <div class="arrived" transition:fly={{ duration: 1800 }}>
           <form action="?/checkIn" method="POST" use:enhance>
-            <button class="card" type="submit" in:fly out:fly>
+            <button class="card" type="submit">
               <div>
                 <p>NPU:</p>
                 <h6><strong>{RSVP.NPU}</strong></h6>
@@ -154,13 +158,13 @@
                 <h6>{RSVP.FNAME} {RSVP.LNAME}</h6>
               </div>
 
-              <div class="bools">
+              <!-- <div class="bools">
                 <p>RSVP'd:</p>
                 <h6>{RSVP.RSVPd ? '✅' : '❌'}</h6>
 
                 <p>ATTENDED:</p>
                 <h6>{RSVP.ATTENDED ? '✅' : '❌'}</h6>
-              </div>
+              </div> -->
 
               <input type="hidden" name="ATTENDED" value={RSVP.ATTENDED} />
               <input type="hidden" name="_id" value={RSVP._id} />
@@ -201,7 +205,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 0 auto;
     /* transition: position 5s ease-in-out; */
   }
