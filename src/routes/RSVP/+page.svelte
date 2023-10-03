@@ -107,6 +107,14 @@
     width: 90%;
     margin: 0 auto;
   }
+
+  @media (max-width: 600px) {
+    .card {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+
   input,
   select,
   textarea {

@@ -3,7 +3,7 @@
   export let form;
   export let notCheckedIn;
   import { enhance } from '$app/forms';
-  import { fade, fly } from 'svelte/transition';
+  import { fade, fly, crossfade } from 'svelte/transition';
 
   $: ({ RSVPs, notCheckedIn } = data);
 </script>
@@ -14,7 +14,7 @@
 
 <div class="container">
   <h2>
-    Attendees Arrived: {RSVPs.length - notCheckedIn} | Attendees Not Arrived: {notCheckedIn}
+    Attendees Arrived: {RSVPs.length - notCheckedIn} | Expected: {notCheckedIn}
   </h2>
 </div>
 
@@ -30,7 +30,7 @@
   {#each RSVPs as RSVP (RSVP._id)}
     {#if Boolean(RSVP.ATTENDED) === false}
       {#if RSVP.PLUSONE === false}
-        <div class="expected" transition:fly={{ duration: 1800 }}>
+        <div class="expected">
           <form action="?/checkIn" method="POST" use:enhance>
             <button class="card" type="submit">
               <div>
@@ -65,7 +65,7 @@
         </div>
       {/if}
       {#if RSVP.PLUSONE === true}
-        <div class="expected" transition:fly={{ duration: 1800 }}>
+        <div class="expected">
           <form action="?/checkIn" method="POST" use:enhance>
             <button class="card" type="submit">
               <div>
@@ -105,7 +105,7 @@
   {#each RSVPs as RSVP (RSVP._id)}
     {#if Boolean(RSVP.ATTENDED) === true}
       {#if RSVP.PLUSONE === false}
-        <div class="arrived" transition:fly={{ duration: 1800 }}>
+        <div class="arrived">
           <form action="?/checkIn" method="POST" use:enhance>
             <button class="card" type="submit">
               <div>
@@ -140,7 +140,7 @@
         </div>
       {/if}
       {#if RSVP.PLUSONE === true}
-        <div class="arrived" transition:fly={{ duration: 1800 }}>
+        <div class="arrived">
           <form action="?/checkIn" method="POST" use:enhance>
             <button class="card" type="submit">
               <div>
@@ -182,18 +182,17 @@
     filter: saturate(0.1);
   }
 
-  .bools {
+  /* .bools {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2fr 2fr;
-    /* transpose grid */
     grid-auto-flow: column;
-  }
+  } */
 
-  .bools h6 {
+  /* .bools h6 {
     display: grid;
     align-items: start;
-  }
+  } */
 
   .card {
     background-color: rgba(255, 255, 255, 0.85);

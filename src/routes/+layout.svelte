@@ -2,8 +2,8 @@
   import { page } from '$app/stores';
 </script>
 
-<nav>
-  <h1>2023 NPU Chairs Appreciation Dinner</h1>
+<header>
+  <a href="/"><h1>2023 NPU Chairs' Appreciation Dinner</h1></a>
   {#if $page.route.id !== '/RSVP'}
     <ul>
       {#if $page.route.id !== '/'}
@@ -15,9 +15,12 @@
       {#if $page.route.id !== '/RSVP'}
         <li><a href="/RSVP">RSVP</a></li>
       {/if}
+      {#if $page.route.id !== '/roster'}
+        <li><a href="/roster">Roster</a></li>
+      {/if}
     </ul>
   {/if}
-</nav>
+</header>
 
 <slot />
 
@@ -26,12 +29,6 @@
 </footer>
 
 <style>
-  nav {
-    color: #fff;
-    padding: 5px;
-    margin-bottom: 2svh;
-  }
-
   h1 {
     font-family: 'Allura', cursive;
     font-size: 3rem;
@@ -50,7 +47,7 @@
     color: inherit;
   }
 
-  nav ul {
+  ul {
     font-family: 'Urbanist', sans-serif;
     display: flex;
     justify-content: space-around;
@@ -61,5 +58,21 @@
 
   footer {
     position: sticky;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    footer p {
+      font-size: 0.7rem;
+      font-weight: 200;
+    }
+  }
+
+  @media print {
+    ul {
+      display: none;
+    }
   }
 </style>
