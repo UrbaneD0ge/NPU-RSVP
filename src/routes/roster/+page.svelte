@@ -57,7 +57,7 @@
       {:else}
         <tr>
           <td class="data-center"><strong>{RSVP.NPU}</strong></td>
-          <td>- - </td>
+          <td> -</td>
           <td>{RSVP.GUEST || '-'}</td>
           <td>{RSVP.DIET || '-'}</td>
           <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>

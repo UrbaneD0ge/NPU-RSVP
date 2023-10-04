@@ -38,7 +38,7 @@ export const actions = {
         await RSVPs.insertMany([{ ...RSVP, PLUSONE: false }, { ...RSVP, PLUSONE: true }]);
         console.log('Plus One RSVPd');
       } else {
-        await RSVPs.insertOne({ ...RSVP });
+        await RSVPs.insertOne({ ...RSVP, PLUSONE: false });
         console.log('Single RSVPd');
       }
 
