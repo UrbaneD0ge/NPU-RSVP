@@ -206,7 +206,9 @@
     align-items: center;
     justify-content: space-evenly;
     margin: 0 auto;
-    /* transition: position 5s ease-in-out; */
+    opacity: 0.875;
+    transition: all 0.5s ease;
+    box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.5);
   }
 
   .container {
