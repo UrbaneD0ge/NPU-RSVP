@@ -4,14 +4,15 @@
   <div>
     <p>When:</p>
     <h4>
-      Thursday, November 9<sup>th,</sup> 2023<br /> 6 o'Clock in the Evening
+      Thursday, November 9<sup>th,</sup> 2023
     </h4>
   </div>
 
   <div>
     <p>Where:</p>
-    <h4>1234 Peachtree St, Atlanta</h4>
-    <p>No parking available, take MARTA</p>
+    <a href="hhttps://maps.app.goo.gl/RVMibH3Gw9ZLyk4Z7ttp://"
+      ><h4>1710 Defoor Ave NW</h4></a
+    >
   </div>
 
   <div>
@@ -46,6 +47,11 @@
   a img {
     margin: 2svh;
     border-radius: 5px;
+  }
+
+  a {
+    /* text-decoration: none; */
+    color: white;
   }
 
   p {
