@@ -15,46 +15,47 @@
 
 <div class="card">
   <form method="POST" use:enhance>
-    <label for="ROLE">I am:</label>
-    <select name="ROLE" id="ROLE" bind:value={ROLE}>
-      <option selected disabled />
-      <option value="Chair">An NPU Chair</option>
-      <option value="Officer">An NPU Officer</option>
-      <option value="CM">A City Council Member or staff</option>
-    </select>
-
-    {#if ROLE !== 'CM'}
-      <label for="NPU">NPU</label>
-      <select name="NPU" id="NPU">
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">E</option>
-        <option value="F">F</option>
-        <option value="G">G</option>
-        <option value="H">H</option>
-        <option value="I">I</option>
-        <option value="J">J</option>
-        <option value="K">K</option>
-        <option value="L">L</option>
-        <option value="M">M</option>
-        <option value="N">N</option>
-        <option value="O">O</option>
-        <option value="P">P</option>
-        <option value="Q">Q</option>
-        <option value="R">R</option>
-        <option value="S">S</option>
-        <option value="T">T</option>
-        <!-- <option value="U">U</option> -->
-        <option value="V">V</option>
-        <option value="W">W</option>
-        <option value="X">X</option>
-        <option value="Y">Y</option>
-        <option value="Z">Z</option>
+    <div class="formStack">
+      <label for="ROLE">I am:</label>
+      <select name="ROLE" id="ROLE" bind:value={ROLE}>
+        <option selected disabled />
+        <option value="Chair">An NPU Chair</option>
+        <option value="Officer">An NPU Officer</option>
+        <option value="CM">A City Council Member or staff</option>
       </select>
-    {/if}
 
+      {#if ROLE !== 'CM'}
+        <label for="NPU">NPU</label>
+        <select name="NPU" id="NPU">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+          <option value="I">I</option>
+          <option value="J">J</option>
+          <option value="K">K</option>
+          <option value="L">L</option>
+          <option value="M">M</option>
+          <option value="N">N</option>
+          <option value="O">O</option>
+          <option value="P">P</option>
+          <option value="Q">Q</option>
+          <option value="R">R</option>
+          <option value="S">S</option>
+          <option value="T">T</option>
+          <!-- <option value="U">U</option> -->
+          <option value="V">V</option>
+          <option value="W">W</option>
+          <option value="X">X</option>
+          <option value="Y">Y</option>
+          <option value="Z">Z</option>
+        </select>
+      {/if}
+    </div>
     <label for="FNAME">First:</label>
     {#if form?.missing}
       <p>This field is required!</p>
@@ -93,6 +94,11 @@
     padding: 2rem;
     width: 50%;
     margin: 0 auto;
+  }
+
+  .formStack {
+    display: flex;
+    flex-direction: column;
   }
 
   button {
