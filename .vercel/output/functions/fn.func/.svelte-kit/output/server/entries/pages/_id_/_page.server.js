@@ -1,4 +1,3 @@
-import { Error } from "mongoose";
 import { R as RSVPs } from "../../../chunks/RSVPs.js";
 import { ObjectId } from "mongodb";
 import { r as redirect } from "../../../chunks/index.js";
@@ -7,7 +6,7 @@ async function load({ url }) {
   if (!ObjectId.isValid(ID)) {
     return {
       status: 303,
-      redirect: "/error"
+      redirect: "/"
     };
   }
   const data = await RSVPs.findOne({ _id: new ObjectId(ID) });
@@ -38,7 +37,7 @@ const actions = {
       return {
         status: 500,
         error: JSON.stringify(error),
-        message: JSON.stringify(Error)
+        message: "Error occurred while updating RSVP."
       };
     }
     throw redirect(303, "/");
