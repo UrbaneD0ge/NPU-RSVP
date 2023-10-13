@@ -11,34 +11,34 @@
 </svelte:head>
 
 {#if form?.error}
-  <p style="color: red;">{form.error}</p>
+  <p style="color: red;">Form Error! {form.error}</p>
 {/if}
 
 <div class="card">
   <form method="POST" use:enhance>
-    <h3>NPU-{RSVPs.NPU}</h3>
-    <input type="hidden" name="NPU" id="NPU" value={RSVPs.NPU} />
-    <input type="hidden" name="_id" id="_id" value={RSVPs._id} />
+    <h3>NPU-{RSVPs?.NPU}</h3>
+    <input type="hidden" name="NPU" id="NPU" value={RSVPs?.NPU} />
+    <input type="hidden" name="_id" id="_id" value={RSVPs?._id} />
 
     <label for="FNAME">First:</label>
     {#if form?.missing}
       <p>This field is required!</p>
     {/if}
-    <input type="text" name="FNAME" id="FNAME" value={RSVPs.FNAME ?? ''} />
+    <input type="text" name="FNAME" id="FNAME" value={RSVPs?.FNAME ?? ''} />
 
     <label for="LNAME">Last:</label>
     {#if form?.missing}
       <p>This field is required!</p>
     {/if}
-    <input type="text" name="LNAME" id="LNAME" value={RSVPs.LNAME ?? ''} />
+    <input type="text" name="LNAME" id="LNAME" value={RSVPs?.LNAME ?? ''} />
 
     <label for="GUEST">The name of your Guest:</label>
-    <input type="text" name="GUEST" id="GUEST" value={RSVPs.GUEST ?? ''} />
+    <input type="text" name="GUEST" id="GUEST" value={RSVPs?.GUEST ?? ''} />
 
     <label for="DIET"
       >Please inform us of any allergies or dietary restrictions:</label
     >
-    <textarea name="DIET" id="DIET" value={RSVPs.DIET ?? ''} />
+    <textarea name="DIET" id="DIET" value={RSVPs?.DIET ?? ''} />
 
     <label for="RSVPd">Will you be attending?</label>
     <select name="RSVPd" id="RSVPd" required>

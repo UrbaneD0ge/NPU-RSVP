@@ -56,8 +56,8 @@
     padding: 5px;
   }
 
-  footer {
-    position: sticky;
+  p {
+    font-weight: 200;
   }
 
   @media (max-width: 600px) {

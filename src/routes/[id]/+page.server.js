@@ -1,15 +1,14 @@
-import { Error } from 'mongoose';
 import { RSVPs } from '$db/RSVPs';
 import { ObjectId } from 'mongodb';
 import { redirect } from '@sveltejs/kit';
 
 export async function load({ url }) {
   const ID = url.pathname.slice(1);
-  // if path is not a valid ObjectId, redirect to 404
+  // if path is not a valid ObjectId, redirect to /
   if (!ObjectId.isValid(ID)) {
     return {
       status: 303,
-      redirect: '/error'
+      redirect: '/'
     };
   }
   // get all RSVP data from db
@@ -51,7 +50,7 @@ export const actions = {
       return {
         status: 500,
         error: JSON.stringify(error),
-        message: JSON.stringify(Error)
+        message: "Error occurred while updating RSVP."
       };
     }
     throw redirect(303, '/');

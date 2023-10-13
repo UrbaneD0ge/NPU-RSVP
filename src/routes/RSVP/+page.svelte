@@ -98,7 +98,7 @@
     background-color: rgb(255, 255, 255, 0.55);
     border-radius: 20px;
     padding: 2rem;
-    width: 50%;
+    max-width: 45%;
     margin: 0 auto;
   }
 
@@ -133,10 +133,21 @@
     margin: 0 auto;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
     .card {
+      max-width: 70%;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .card {
+      max-width: none;
       width: 90%;
       margin: 0 auto;
+    }
+
+    form {
+      width: 100%;
     }
   }
 
