@@ -3,7 +3,7 @@
   <h4>
     Sorry we won't be seeing you this year. Feel free to add the event to your
     Google Calendar with the button below, and let us know if you change your
-    mind! We'll be accepting RSVPs until October 23<sup>rd</sup>.
+    mind! We'll be accepting RSVPs until November 2<sup>nd</sup>.
   </h4>
   <a
     target="_blank"
