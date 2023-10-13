@@ -1,4 +1,4 @@
-import { c as create_ssr_component, e as escape, f as add_attribute } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, e as escape, d as add_attribute } from "../../../chunks/ssr.js";
 import "devalue";
 const _page_svelte_svelte_type_style_lang = "";
 const css = {
