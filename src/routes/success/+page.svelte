@@ -4,7 +4,8 @@
   <div>
     <p>When:</p>
     <h4>
-      Thursday, November 9<sup>th,</sup> 2023
+      Thursday, November 9<sup>th,</sup> 2023<br />
+      6:00pm - 9:00pm
     </h4>
   </div>
 
@@ -37,7 +38,8 @@
   h1 {
     text-align: center;
     font-weight: 500;
-    /* text-decoration: underline; */
+    font-family: 'Allura', sans-serif;
+    font-size: 3rem;
   }
 
   h4 {

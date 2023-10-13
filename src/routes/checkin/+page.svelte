@@ -251,9 +251,10 @@
     font-size: 1.5rem;
     position: fixed;
     top: 2svh;
-    left: 30svw;
+    left: 40svw;
     background-color: whitesmoke;
     border-radius: 20px;
     padding: 1rem;
+    z-index: 100;
   }
 </style>

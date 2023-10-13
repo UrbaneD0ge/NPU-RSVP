@@ -17,7 +17,7 @@
   <form method="POST" use:enhance>
     <div class="formStack">
       <label for="ROLE">I am:</label>
-      <select name="ROLE" id="ROLE" bind:value={ROLE}>
+      <select name="ROLE" id="ROLE" bind:value={ROLE} required>
         <option selected disabled />
         <option value="Chair">An NPU Chair</option>
         <option value="Officer">An NPU Officer</option>
@@ -89,6 +89,8 @@
 
 <style>
   .card {
+    font-size: 1.3rem;
+    font-weight: 200;
     background-color: rgb(255, 255, 255, 0.55);
     border-radius: 20px;
     padding: 2rem;
@@ -106,7 +108,14 @@
     height: 2rem;
     font-size: 1.4rem;
     /* scrollbar narrow */
+    background-color: buttonface;
+    transition: background-color 2s ease;
   }
+
+  button:hover {
+    background-color: #e0c300;
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -137,6 +146,7 @@
 
   textarea {
     resize: vertical;
+    padding: 0.3rem;
   }
 
   #NPU {

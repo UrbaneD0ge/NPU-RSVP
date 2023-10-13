@@ -16,7 +16,7 @@
 
 <div class="card">
   <form method="POST" use:enhance>
-    <h3>NPU: {RSVPs.NPU}</h3>
+    <h3>NPU-{RSVPs.NPU}</h3>
     <input type="hidden" name="NPU" id="NPU" value={RSVPs.NPU} />
     <input type="hidden" name="_id" id="_id" value={RSVPs._id} />
 
@@ -56,6 +56,8 @@
 
 <style>
   .card {
+    font-size: 1.3rem;
+    font-weight: 200;
     background-color: rgb(255, 255, 255, 0.55);
     border-radius: 20px;
     padding: 2rem;
