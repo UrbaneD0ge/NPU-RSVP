@@ -5,15 +5,6 @@
     Google Calendar with the button below, and let us know if you change your
     mind! We'll be accepting RSVPs until November 2<sup>nd</sup>.
   </h4>
-  <a
-    target="_blank"
-    href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MjN1dG1ocWc0dDExdmM4NTdjN2x2cnAxNW0ga2lwZHVubGFwY29hQG0&amp;tmsrc=kipdunlapcoa%40gmail.com"
-    ><img
-      alt="Add to Google Calendar"
-      border="0"
-      src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"
-    /></a
-  >
 </div>
 
 <style>
@@ -22,6 +13,7 @@
     font-weight: 500;
     font-family: 'Allura', sans-serif;
     font-size: 3rem;
+    margin-block: 0.5rem;
   }
 
   h4 {
@@ -31,18 +23,13 @@
     margin: 0;
   }
 
-  a img {
-    margin: 2svh;
-    border-radius: 5px;
-  }
-
   .card {
     background-color: rgb(255, 255, 255, 0.55);
     border-radius: 20px;
     padding: 2rem;
     width: 50%;
     height: 30svh;
-    margin: 0 auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

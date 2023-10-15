@@ -99,7 +99,7 @@
     border-radius: 20px;
     padding: 2rem;
     max-width: 45%;
-    margin: 5rem auto;
+    margin: 2rem auto;
   }
 
   .formStack {
