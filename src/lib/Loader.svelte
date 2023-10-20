@@ -1,4 +1,8 @@
-<div class="loader" />
+<script>
+  import { fade } from 'svelte/transition';
+</script>
+
+<div class="loader" transition:fade />
 
 <style>
   .loader {

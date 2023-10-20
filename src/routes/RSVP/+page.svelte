@@ -29,7 +29,7 @@
         {#if ROLE !== 'CM'}
           <label for="NPU">NPU</label>
           <select name="NPU" id="NPU" required>
-            <option value="-" selected disabled />
+            <option selected disabled />
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
