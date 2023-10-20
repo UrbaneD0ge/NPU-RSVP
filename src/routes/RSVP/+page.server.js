@@ -13,7 +13,7 @@ export const actions = {
 
     // prepare data for database
     const RSVP = {
-      NPU: data.get('NPU'),
+      NPU: data.get('NPU') || '-',
       FNAME: data.get('FNAME').trim(),
       LNAME: data.get('LNAME').trim(),
       GUEST: data.get('GUEST')?.trim(),
@@ -33,7 +33,7 @@ export const actions = {
 
     try {
 
-      if (RSVP.GUEST != '') {
+      if (RSVP.GUEST != null || undefined) {
         // write formData to database
         await RSVPs.insertMany([{ ...RSVP, PLUSONE: false }, { ...RSVP, PLUSONE: true }]);
         console.log('Plus One RSVPd');

@@ -1,5 +1,8 @@
 <script>
-  import { page } from '$app/stores';
+  // import { page } from '$app/stores';
+  import { fade } from 'svelte/transition';
+
+  export let data;
 </script>
 
 <header>
@@ -22,7 +25,11 @@
   {/if} -->
 </header>
 
-<slot />
+{#key data.pathname}
+  <div in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
+    <slot />
+  </div>
+{/key}
 
 <footer>
   <p>©2023 Kip Dunlap for the Atlanta Department of City Planning</p>
@@ -47,15 +54,6 @@
     color: inherit;
   }
 
-  ul {
-    font-family: 'Urbanist', sans-serif;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    margin: 5px;
-    padding: 5px;
-  }
-
   p {
     font-weight: 200;
   }
@@ -67,12 +65,6 @@
     footer p {
       font-size: 0.7rem;
       font-weight: 200;
-    }
-  }
-
-  @media print {
-    ul {
-      display: none;
     }
   }
 </style>
