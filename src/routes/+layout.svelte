@@ -1,5 +1,16 @@
 <script>
-  // import { page } from '$app/stores';
+  // import { page } from '$app/stores'; // navigation items
+
+  //loader
+  import Loader from '$lib/Loader.svelte';
+  import { beforeNavigate, afterNavigate } from '$app/navigation';
+
+  let isLoading = false;
+
+  beforeNavigate(() => (isLoading = true));
+  afterNavigate(() => (isLoading = false));
+
+  // page transitions
   import { fade } from 'svelte/transition';
 
   export let data;
@@ -7,6 +18,7 @@
 
 <header>
   <a href="/"><h1>2023 NPU Chairs' Appreciation Dinner</h1></a>
+
   <!-- {#if $page.route.id !== '/RSVP'}
     <ul>
       {#if $page.route.id !== '/'}
@@ -30,6 +42,10 @@
     <slot />
   </div>
 {/key}
+
+{#if isLoading}
+  <Loader />
+{/if}
 
 <footer>
   <p>©2023 Kip Dunlap for the Atlanta Department of City Planning</p>
