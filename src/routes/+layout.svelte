@@ -19,7 +19,7 @@
 <header>
   <a href="/"><h1>2023 NPU Chairs' Appreciation Dinner</h1></a>
 
-  {#if $page.route.id !== '/RSVP'}
+  <!-- {#if $page.route.id !== '/RSVP'}
     <ul>
       {#if $page.route.id !== '/'}
         <li><a href="/">Invitation</a></li>
@@ -34,7 +34,7 @@
         <li><a href="/roster">Roster</a></li>
       {/if}
     </ul>
-  {/if}
+  {/if} -->
 </header>
 
 {#key data.pathname}

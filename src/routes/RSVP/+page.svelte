@@ -25,6 +25,7 @@
           <option value="CM">a City Council Member or staff</option>
         </select>
       </div>
+
       <div class="formStack" style="margin:auto">
         {#if ROLE !== 'CM'}
           <label for="NPU">NPU</label>
@@ -79,7 +80,7 @@
     {/if}
 
     <label for="DIET">Please list any allergies or dietary restrictions:</label>
-    <textarea name="DIET" id="DIET" />
+    <textarea name="DIET" id="DIET" rows="1" />
 
     <label for="RSVPd">Will you be attending?</label>
     <select name="RSVPd" id="RSVPd">
@@ -152,10 +153,15 @@
   }
 
   input,
-  select,
-  textarea {
+  select {
     margin-bottom: 1rem;
     height: 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+  }
+  textarea {
+    margin-bottom: 1rem;
+    /* height: 2rem; */
     font-size: 1.2rem;
     border-radius: 8px;
   }
@@ -172,7 +178,7 @@
 
   #NPU {
     width: fit-content;
-    height: 3rem;
+    /* height: 3rem; */
     font-size: 2rem;
     /* scrollbar narrow */
   }
