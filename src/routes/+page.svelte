@@ -11,5 +11,13 @@
     margin: 0 auto;
     height: 80svh;
     width: auto;
+    box-shadow: none;
+    transition: all 5s ease;
+  }
+
+  img:hover {
+    color: #e0c300;
+    background: #e0c300;
+    box-shadow: 0 0 90px #f3f1e6;
   }
 </style>

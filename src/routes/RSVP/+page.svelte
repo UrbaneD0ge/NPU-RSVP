@@ -178,9 +178,8 @@
 
   #NPU {
     width: fit-content;
-    /* height: 3rem; */
+    height: 3rem;
     font-size: 2rem;
-    /* scrollbar narrow */
   }
 
   #roleRow {
