@@ -140,18 +140,6 @@
     }
   }
 
-  @media (max-width: 620px) {
-    .card {
-      max-width: none;
-      width: 90%;
-      margin: 0 auto;
-    }
-
-    form {
-      width: 100%;
-    }
-  }
-
   input,
   select {
     margin-bottom: 1rem;
@@ -159,6 +147,7 @@
     font-size: 1.2rem;
     border-radius: 8px;
   }
+
   textarea {
     margin-bottom: 1rem;
     /* height: 2rem; */
