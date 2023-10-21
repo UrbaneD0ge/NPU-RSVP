@@ -6,10 +6,7 @@ export async function load({ url }) {
   const ID = url.pathname.slice(1);
   // if path is not a valid ObjectId, redirect to /
   if (!ObjectId.isValid(ID)) {
-    return {
-      status: 303,
-      redirect: '/'
-    };
+    throw redirect(303, '/');
   }
   // get all RSVP data from db
   const data = await RSVPs.findOne({ _id: new ObjectId(ID) });
