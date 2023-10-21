@@ -1,9 +1,8 @@
 <div class="card">
   <h1>You'll be missed!</h1>
   <h4>
-    Sorry we won't be seeing you this year. Feel free to add the event to your
-    Google Calendar with the button below, and let us know if you change your
-    mind! We'll be accepting RSVPs until November 2.
+    Sorry we won't be seeing you this year. Let us know if you change your mind!
+    We'll be accepting RSVPs until November 2.
   </h4>
 </div>
 
