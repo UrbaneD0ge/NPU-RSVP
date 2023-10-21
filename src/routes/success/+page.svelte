@@ -4,14 +4,15 @@
   <div>
     <p>When:</p>
     <h4>
-      Thursday, November 9<sup>th,</sup> 2023<br />
+      Thursday, November 9, 2023<br />
       6:00pm - 9:00pm
     </h4>
   </div>
 
   <div>
     <p>Where:</p>
-    <a href="hhttps://maps.app.goo.gl/RVMibH3Gw9ZLyk4Z7ttp://"
+    <h4>The West Venue</h4>
+    <a href="https://maps.app.goo.gl/nRrtTAAFvYCA8Mgd6" target="_blank"
       ><h4>1710 Defoor Ave NW</h4></a
     >
   </div>
@@ -50,16 +51,15 @@
     margin: 0;
   }
 
-  .card {
+  /* .card {
     background-color: rgb(255, 255, 255, 0.55);
     border-radius: 20px;
     padding: 2rem;
     width: 50%;
-    height: 50svh;
     margin: 2rem auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-  }
+  } */
 </style>

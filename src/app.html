@@ -67,14 +67,39 @@
 		}
 	}
 
+	* {
+		box-sizing: border-box;
+	}
+
 	html,
 	body {
 		min-height: 95svh;
+		padding: 0;
 	}
 
 	footer {
 		position: sticky;
 		top: 100vh;
+	}
+
+	.card {
+		background-color: rgb(255, 255, 255, 0.35);
+		border-radius: 20px;
+		padding: 2rem;
+		width: 50%;
+		margin: 2rem auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	@media (max-width: 620px) {
+		.card {
+			max-width: none;
+			width: 90%;
+			margin: 0 auto;
+		}
 	}
 </style>
 

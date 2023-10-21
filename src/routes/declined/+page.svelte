@@ -3,7 +3,7 @@
   <h4>
     Sorry we won't be seeing you this year. Feel free to add the event to your
     Google Calendar with the button below, and let us know if you change your
-    mind! We'll be accepting RSVPs until November 2<sup>nd</sup>.
+    mind! We'll be accepting RSVPs until November 2.
   </h4>
 </div>
 
@@ -23,16 +23,15 @@
     margin: 0;
   }
 
-  .card {
-    background-color: rgb(255, 255, 255, 0.55);
+  /* .card {
+    background-color: rgb(255, 255, 255, 0.4);
     border-radius: 20px;
     padding: 2rem;
     width: 50%;
-    height: 30svh;
     margin: 2rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+  } */
 </style>
