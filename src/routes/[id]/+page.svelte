@@ -46,6 +46,23 @@
       <option value="false">Regrets, I won't be able to join.</option>
     </select>
 
+    <fieldset>
+      Confirmed by:
+      <div>
+        <label for="PHONE">📞</label>
+        <input type="checkbox" name="PHONE" id="PHONE" checked={RSVPs.PHONE} />
+      </div>
+      <div>
+        <label for="EMAIL">📧</label>
+        <input
+          type="checkbox"
+          name="EMAIL"
+          id="EMAIL"
+          bind:checked={RSVPs.EMAIL}
+        />
+      </div>
+    </fieldset>
+
     <button type="submit">SAVE</button>
   </form>
 </div>
@@ -70,6 +87,19 @@
     height: 2rem;
     font-size: 1.4rem;
     /* scrollbar narrow */
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  fieldset input {
+    width: 1.5rem;
+    height: 1.5rem;
   }
   form {
     display: flex;
@@ -100,4 +130,11 @@
     font-size: 2rem;
     margin: 0;
   }
+
+  /* label {
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+    display: inline;
+  } */
 </style>

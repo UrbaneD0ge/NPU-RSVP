@@ -28,13 +28,23 @@ export const actions = {
     let rsvpStatus = data.get('RSVPd');
     rsvpStatus = rsvpStatus === 'true' ? true : false;
 
+    let phoneConf = data.get('PHONE');
+    phoneConf = phoneConf == 'on' ? true : false;
+    console.log(phoneConf)
+
+    let emailConf = data.get('EMAIL');
+    emailConf = emailConf == 'on' ? true : false;
+    console.log(emailConf)
+
     const RSVP = {
       NPU: data.get('NPU'),
       FNAME: data.get('FNAME'),
       LNAME: data.get('LNAME'),
       GUEST: data.get('GUEST'),
       DIET: data.get('DIET'),
-      RSVPd: rsvpStatus
+      RSVPd: rsvpStatus,
+      PHONE: phoneConf,
+      EMAIL: emailConf
     };
 
     try {

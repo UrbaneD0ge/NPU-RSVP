@@ -35,7 +35,7 @@ export const actions = {
 
       if (RSVP.GUEST != null || undefined) {
         // write formData to database
-        await RSVPs.insertMany([{ ...RSVP, PLUSONE: false }, { ...RSVP, PLUSONE: true }]);
+        await RSVPs.insertMany([{ ...RSVP, PLUSONE: false, PHONE: false, EMAIL: false }, { ...RSVP, PLUSONE: true }]);
         console.log('Plus One RSVPd');
       } else {
         await RSVPs.insertOne({ ...RSVP, PLUSONE: false });
