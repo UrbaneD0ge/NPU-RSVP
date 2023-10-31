@@ -8,7 +8,9 @@ const RSVPSchema = new mongoose.Schema({
   GUEST: String,
   ATTENDED: Boolean,
   RSVPd: Boolean,
-  DIET: String
+  DIET: String,
+  PHONE: Boolean,
+  EMAIL: Boolean
 });
 
 export default model("RSVPs", RSVPSchema);

@@ -30,6 +30,7 @@
         <th>RSVP'd</th>
         <th>ATTENDED</th>
         <th>EDIT</th>
+        <th>CONFIRMED</th>
         <th>DELETE</th>
       </tr>
     </thead>
@@ -47,6 +48,9 @@
               <button type="button" id="edit">EDIT</button>
             </a>
           </td>
+          <td class="data-center"
+            >{RSVP.PHONE ? '📞' : ''}{RSVP.EMAIL ? '📧' : ''}</td
+          >
           <td class="data-center">
             <form action="?/delete" method="post">
               <input type="hidden" name="_id" value={RSVP._id} />
@@ -67,6 +71,7 @@
               <button type="button" id="edit">EDIT</button>
             </a>
           </td>
+          <td class="data-center">-</td>
           <td class="data-center">
             <form action="?/delete" method="post">
               <input type="hidden" name="_id" value={RSVP._id} />
