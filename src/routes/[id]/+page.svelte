@@ -54,7 +54,12 @@
       </div>
       <div>
         <label for="EMAIL">📧</label>
-        <input type="checkbox" name="EMAIL" id="EMAIL" checked={RSVPs.EMAIL} />
+        <input
+          type="checkbox"
+          name="EMAIL"
+          id="EMAIL"
+          bind:checked={RSVPs.EMAIL}
+        />
       </div>
     </fieldset>
 

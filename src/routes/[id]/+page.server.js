@@ -29,11 +29,11 @@ export const actions = {
     rsvpStatus = rsvpStatus === 'true' ? true : false;
 
     let phoneConf = data.get('PHONE');
-    phoneConf = phoneConf.checked == 'true' ? true : false;
+    phoneConf = phoneConf == 'on' ? true : false;
     console.log(phoneConf)
 
     let emailConf = data.get('EMAIL');
-    emailConf = emailConf.checked == 'true' ? true : false;
+    emailConf = emailConf == 'on' ? true : false;
     console.log(emailConf)
 
     const RSVP = {
