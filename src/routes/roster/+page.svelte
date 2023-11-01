@@ -11,12 +11,13 @@
 
 <div class="container">
   <h2>
-    RSVPs: {RSVPs.length} || PlusOnes: {RSVPs.filter((r) => r.PLUSONE)
-      .length}<br />
+    RSVPs: {RSVPs.filter((r) => !r.PLUSONE).length} - PlusOnes: {RSVPs.filter(
+      (r) => r.PLUSONE
+    ).length}<br />
     Accepted: {RSVPs.filter((r) => r.RSVPd).length} | Regrets: {RSVPs.filter(
       (r) => !r.RSVPd
     ).length}
-    || Attended: {RSVPs.filter((r) => r.ATTENDED).length} | Not Attended: {RSVPs.filter(
+    - Attended: {RSVPs.filter((r) => r.ATTENDED).length} | Not Attended: {RSVPs.filter(
       (r) => !r.ATTENDED
     ).length}
   </h2>
