@@ -1,5 +1,6 @@
 <script>
   export let data;
+  let showPlus = true;
 
   $: ({ RSVPs } = data);
 </script>
@@ -58,7 +59,7 @@
             </form>
           </td>
         </tr>
-      {:else}
+      {:else if showPlus === true}
         <tr>
           <td class="data-center"><strong>{RSVP.NPU}</strong></td>
           <td> -</td>
@@ -82,6 +83,8 @@
       {/if}
     {/each}
   </table>
+  <label for="showPlusOnes">Show PlusOnes:</label>
+  <input type="checkbox" id="showPlusOnes" bind:checked={showPlus} />
 </div>
 
 <style>
