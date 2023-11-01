@@ -182,18 +182,6 @@
     filter: saturate(0.1);
   }
 
-  /* .bools {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 2fr;
-    grid-auto-flow: column;
-  } */
-
-  /* .bools h6 {
-    display: grid;
-    align-items: start;
-  } */
-
   .card {
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
@@ -256,5 +244,29 @@
     border-radius: 20px;
     padding: 1rem;
     z-index: 100;
+  }
+
+  @media screen and (width < 1020px) {
+    .card {
+      width: 25vw;
+      height: 25vw;
+    }
+  }
+
+  @media screen and (width < 560px) {
+    .card {
+      width: 25vw;
+      height: 25vw;
+    }
+
+    h4 {
+      font-size: 0.75rem;
+    }
+    h6 {
+      font-size: 0.5rem;
+    }
+    p {
+      display: none;
+    }
   }
 </style>
