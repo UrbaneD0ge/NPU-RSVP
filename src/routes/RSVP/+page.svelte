@@ -118,7 +118,6 @@
     width: 100%;
     height: 2rem;
     font-size: 1.4rem;
-    /* scrollbar narrow */
     background-color: buttonface;
     transition: background-color 2s ease;
   }

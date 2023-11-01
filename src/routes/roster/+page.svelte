@@ -3,6 +3,10 @@
   let showPlus = true;
 
   $: ({ RSVPs } = data);
+
+  function handleClick() {
+    window.print();
+  }
 </script>
 
 <svelte:head>
@@ -31,8 +35,8 @@
         <th>DIET</th>
         <th>RSVP'd</th>
         <th>ATTENDED</th>
-        <th>EDIT</th>
         <th>CONFIRMED</th>
+        <th>EDIT</th>
         <th>DELETE</th>
       </tr>
     </thead>
@@ -45,14 +49,14 @@
           <td>{RSVP.DIET || '-'}</td>
           <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
           <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
+          <td class="data-center"
+            >{RSVP.PHONE ? '📞' : ''}{RSVP.EMAIL ? '📧' : ''}</td
+          >
           <td class="data-center">
             <a href="/{RSVP._id}">
               <button type="button" id="edit">EDIT</button>
             </a>
           </td>
-          <td class="data-center"
-            >{RSVP.PHONE ? '📞' : ''}{RSVP.EMAIL ? '📧' : ''}</td
-          >
           <td class="data-center">
             <form action="?/delete" method="post">
               <input type="hidden" name="_id" value={RSVP._id} />
@@ -68,12 +72,12 @@
           <td>{RSVP.DIET || '-'}</td>
           <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
           <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
+          <td class="data-center">-</td>
           <td class="data-center">
             <a href="/{RSVP._id}">
               <button type="button" id="edit">EDIT</button>
             </a>
           </td>
-          <td class="data-center">-</td>
           <td class="data-center">
             <form action="?/delete" method="post">
               <input type="hidden" name="_id" value={RSVP._id} />
@@ -86,6 +90,8 @@
   </table>
   <label for="showPlusOnes">Show PlusOnes:</label>
   <input type="checkbox" id="showPlusOnes" bind:checked={showPlus} />
+  <br />
+  <button id="print" on:click={() => handleClick()}>PRINT</button>
 </div>
 
 <style>
@@ -119,6 +125,12 @@
     font-weight: 200;
   }
 
+  #print {
+    width: 40%;
+    margin: 0 auto;
+    display: block;
+  }
+
   .container {
     width: 90%;
     margin: 0 auto;
@@ -133,8 +145,24 @@
   }
 
   @media print {
-    * {
+    *,
+    a {
       color: black !important;
+    }
+
+    :global(html) {
+      background-color: white !important;
+    }
+
+    th:nth-child(8),
+    td:nth-child(8),
+    th:nth-child(9),
+    td:nth-child(9) {
+      display: none;
+    }
+
+    #print {
+      display: none;
     }
   }
 </style>
