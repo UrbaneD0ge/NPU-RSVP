@@ -7,6 +7,70 @@
   function handleClick() {
     window.print();
   }
+
+  function downloadCSV() {
+    var csv_data = [];
+
+    // Get each row data
+    var rows = document.getElementsByTagName('tr');
+    for (var i = 0; i < rows.length; i++) {
+      // Get each column data
+      var cols = rows[i].querySelectorAll('td,th');
+
+      // sanitize data for CSV
+      for (var j = 0; j < 7; j++) {
+        cols[j].innerText = cols[j].innerText.replace(/,/g, '');
+      }
+
+      // convert emoji to text for CSV
+      for (var j = 0; j < 7; j++) {
+        cols[j].innerText = cols[j].innerText.replace(/✅/g, 'Yes');
+        cols[j].innerText = cols[j].innerText.replace(/❌/g, 'No');
+        cols[j].innerText = cols[j].innerText.replace(/📞/g, 'Phone');
+        cols[j].innerText = cols[j].innerText.replace(/📧/g, 'By Email');
+      }
+
+      // Stores each csv row data
+      var csvrow = [];
+      for (var j = 0; j < 7; j++) {
+        // Get the text data of each cell of
+        // a row and push it to csvrow
+        csvrow.push(cols[j].innerText);
+      }
+
+      // Combine each column value with comma
+      csv_data.push(csvrow.join(','));
+    }
+    // combine each row data with new line character
+    csv_data = csv_data.join('\n');
+
+    downloadCSVFile(csv_data);
+  }
+
+  function downloadCSVFile(csv_data) {
+    // Create CSV file object and feed our
+    // csv_data into it
+    let CSVFile = new Blob([csv_data], { type: 'text/csv' });
+
+    // Create to temporary link to initiate
+    // download process
+    var temp_link = document.createElement('a');
+
+    let date = new Date().toLocaleDateString();
+
+    // Download csv file
+    temp_link.download = '23ChairsDinner_RSVPs-' + date + '.csv';
+    var url = window.URL.createObjectURL(CSVFile);
+    temp_link.href = url;
+
+    // This link should not be displayed
+    temp_link.style.display = 'none';
+    document.body.appendChild(temp_link);
+
+    // Automatically click the link to trigger download
+    temp_link.click();
+    document.body.removeChild(temp_link);
+  }
 </script>
 
 <svelte:head>
@@ -88,10 +152,15 @@
       {/if}
     {/each}
   </table>
-  <label for="showPlusOnes">Show PlusOnes:</label>
-  <input type="checkbox" id="showPlusOnes" bind:checked={showPlus} />
-  <br />
-  <button id="print" on:click={() => handleClick()}>PRINT</button>
+  <div id="utilities">
+    <label for="showPlusOnes">Show PlusOnes:</label>
+    <input type="checkbox" id="showPlusOnes" bind:checked={showPlus} />
+    <br />
+    <button type="button" id="print" on:click={() => handleClick()}
+      >PRINT</button
+    >
+    <button type="button" on:click={() => downloadCSV()}>DOWNLOAD</button>
+  </div>
 </div>
 
 <style>
@@ -125,10 +194,22 @@
     font-weight: 200;
   }
 
-  #print {
+  #utilities {
+    margin: 3svh auto;
+    display: flex;
+    height: 2rem;
+  }
+
+  #utilities button {
     width: 40%;
     margin: 0 auto;
-    display: block;
+    display: inline-block;
+    align-content: center;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: #e0c300;
   }
 
   .container {
@@ -151,7 +232,7 @@
     }
 
     :global(html) {
-      background-color: white !important;
+      background: white !important;
     }
 
     th:nth-child(8),
@@ -161,7 +242,7 @@
       display: none;
     }
 
-    #print {
+    #utilities {
       display: none;
     }
   }
