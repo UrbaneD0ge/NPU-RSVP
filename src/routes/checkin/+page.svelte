@@ -199,9 +199,14 @@
     box-shadow: inset 0 0 12px 2px rgba(0, 0, 0, 0.5);
   }
 
+  /* .card div {
+    padding-block-start: 1.5rem;
+    padding-block-end: 1.5rem;
+  } */
+
   .container {
     margin: 0 auto;
-    width: 85lvw;
+    width: 90lvw;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -248,8 +253,18 @@
 
   @media screen and (width < 1020px) {
     .card {
-      width: 25vw;
+      width: 20vw;
       height: 25vw;
+    }
+
+    /* h4 {
+      font-size: 0.75rem;
+    }
+    h6 {
+      font-size: 0.5rem;
+    } */
+    p {
+      display: none;
     }
   }
 
