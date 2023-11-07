@@ -204,7 +204,7 @@
 
   .container {
     margin: 0 auto;
-    width: 90lvw;
+    width: 100lvw;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -253,7 +253,7 @@
     z-index: 100;
   }
 
-  @media screen and (width < 1020px) {
+  @media screen and (width < 1025px) {
     .card {
       width: 20vw;
       height: 25vw;
