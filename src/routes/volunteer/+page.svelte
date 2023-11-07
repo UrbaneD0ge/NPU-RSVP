@@ -4,7 +4,6 @@
   export let notCheckedIn;
   import { enhance } from '$app/forms';
   import { fade, fly, crossfade } from 'svelte/transition';
-  import { page } from '$app/stores';
 
   $: ({ RSVPs, notCheckedIn } = data);
 </script>
@@ -15,10 +14,10 @@
 
 <div class="container">
   <h2>
-    Attendees Arrived: {RSVPs.length - notCheckedIn} | Expected: {notCheckedIn}
+    Volunteers Arrived: {RSVPs.length - notCheckedIn} | Expected: {notCheckedIn}
   </h2>
-  <a class="navigation" href="/alpha">Alphabetical Check-In</a>
-  <a class="navigation" href="/npu">Volunteer Check-In</a>
+  <a class="navigation" href="/checkin">Check-In by NPU</a>
+  <a class="navigation" href="/alpha">Check-In Alphabetical</a>
 </div>
 
 {#if form?.message && form?.message !== ''}
