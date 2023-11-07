@@ -36,12 +36,7 @@
           <form action="?/checkIn" method="POST" use:enhance>
             <button class="card" type="submit">
               <div>
-                <p>NPU:</p>
-                <h6><strong>{RSVP.NPU}</strong></h6>
-              </div>
-
-              <div>
-                <p>ATTENDEE:</p>
+                <p>VOLUNTEER:</p>
                 <h4>{RSVP.FNAME} {RSVP.LNAME}</h4>
               </div>
 

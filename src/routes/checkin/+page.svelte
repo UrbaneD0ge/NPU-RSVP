@@ -18,7 +18,7 @@
     Attendees Arrived: {RSVPs.length - notCheckedIn} | Expected: {notCheckedIn}
   </h2>
   <a class="navigation" href="/alpha">Alphabetical Check-In</a>
-  <a class="navigation" href="/npu">Volunteer Check-In</a>
+  <a class="navigation" href="/volunteer">Volunteer Check-In</a>
 </div>
 
 {#if form?.message && form?.message !== ''}
