@@ -180,6 +180,7 @@
   }
 
   .card {
+    color: black;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
     border: 1px solid black;

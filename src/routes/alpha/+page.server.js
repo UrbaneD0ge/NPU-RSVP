@@ -4,7 +4,7 @@ import { ObjectId } from 'mongodb';
 export async function load({ context }) {
 
   // get all RSVP data from db
-  const data = await RSVPs.find({ RSVPd: true }).sort({ LNAME: 'asc' }).toArray();
+  const data = await RSVPs.find({ NPU: { $ne: '-' } }, { RSVPd: true }).sort({ LNAME: 'asc' }).toArray();
 
   // console.log(data);
 

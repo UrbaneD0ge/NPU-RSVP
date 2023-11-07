@@ -79,8 +79,9 @@
 
 <div class="container">
   <h2>
-    RSVPs: {RSVPs.filter((r) => !r.PLUSONE).length} - PlusOnes: {RSVPs.filter(
-      (r) => r.PLUSONE
+    Chairs: {RSVPs.filter((r) => !r.PLUSONE && r.NPU != '-').length} - PlusOnes:
+    {RSVPs.filter((r) => r.PLUSONE).length} - Volunteers: {RSVPs.filter(
+      (r) => r.NPU == '-'
     ).length}<br />
     Accepted: {RSVPs.filter((r) => r.RSVPd).length} | Regrets: {RSVPs.filter(
       (r) => !r.RSVPd

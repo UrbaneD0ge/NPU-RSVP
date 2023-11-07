@@ -46,12 +46,10 @@
                 <h4>{RSVP.FNAME} {RSVP.LNAME}</h4>
               </div>
 
-              {#if RSVP.GUEST}
-                <div>
-                  <p>GUEST:</p>
-                  <h6>{RSVP.GUEST || ''}</h6>
-                </div>
-              {/if}
+              <div>
+                <p>GUEST:</p>
+                <h6>{RSVP.GUEST || '-'}</h6>
+              </div>
 
               <!-- <div class="bools">
                 <p>RSVP'd:</p>
@@ -186,6 +184,7 @@
   }
 
   .card {
+    color: black;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
     border: 1px solid black;

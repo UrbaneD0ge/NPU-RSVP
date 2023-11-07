@@ -4,8 +4,8 @@ import { ObjectId } from 'mongodb';
 export async function load({ context }) {
 
   // get all RSVP data from db
-  const data = await RSVPs.find({ RSVPd: true }).sort({ NPU: 'asc' }).toArray();
-
+  // const data = await RSVPs.find({ RSVPd: true }).sort({ NPU: 'asc' }).toArray();
+  const data = await RSVPs.find({ NPU: { $ne: '-' } }, { RSVPd: true }).sort({ NPU: 'asc' }).toArray();
   // console.log(data);
 
   // get the number of RSVPs not yet checked in
