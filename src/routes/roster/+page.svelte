@@ -18,12 +18,12 @@
       var cols = rows[i].querySelectorAll('td,th');
 
       // sanitize data for CSV
-      for (var j = 0; j < 7; j++) {
+      for (var j = 0; j < cols.length - 2; j++) {
         cols[j].innerText = cols[j].innerText.replace(/,/g, '');
       }
 
       // convert emoji to text for CSV
-      for (var j = 0; j < 7; j++) {
+      for (var j = 0; j < cols.length - 2; j++) {
         cols[j].innerText = cols[j].innerText.replace(/✅/g, 'Yes');
         cols[j].innerText = cols[j].innerText.replace(/❌/g, 'No');
         cols[j].innerText = cols[j].innerText.replace(/📞/g, 'Phone');
@@ -32,7 +32,7 @@
 
       // Stores each csv row data
       var csvrow = [];
-      for (var j = 0; j < 7; j++) {
+      for (var j = 0; j < cols.length - 2; j++) {
         // Get the text data of each cell of
         // a row and push it to csvrow
         csvrow.push(cols[j].innerText);
@@ -104,7 +104,7 @@
         <th>DELETE</th>
       </tr>
     </thead>
-    {#each RSVPs as RSVP (RSVP._id)}
+    {#each RSVPs.filter((r) => r.NPU != '-') as RSVP (RSVP._id)}
       {#if RSVP.PLUSONE === false}
         <tr>
           <td class="data-center"><strong>{RSVP.NPU}</strong></td>
@@ -152,6 +152,40 @@
       {/if}
     {/each}
   </table>
+
+  <h3>Volunteers and Others</h3>
+  <table width="100%" border="1px solid black">
+    <thead>
+      <tr>
+        <th>NPU</th>
+        <th>ATTENDEE</th>
+        <th>RSVP'd</th>
+        <th>CHECKED IN?</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+      </tr>
+    </thead>
+    {#each RSVPs.filter((r) => r.NPU == '-') as RSVP (RSVP._id)}
+      <tr>
+        <td class="data-center"><strong>VOL</strong></td>
+        <td>{RSVP.FNAME} {RSVP.LNAME}</td>
+        <td class="data-center">{RSVP.RSVPd ? '✅' : '❌'}</td>
+        <td class="data-center">{RSVP.ATTENDED ? '✅' : '❌'}</td>
+        <td class="data-center">
+          <a href="/{RSVP._id}">
+            <button type="button" id="edit">EDIT</button>
+          </a>
+        </td>
+        <td class="data-center">
+          <form action="?/delete" method="post">
+            <input type="hidden" name="_id" value={RSVP._id} />
+            <button id="DELETE">DELETE</button>
+          </form>
+        </td>
+      </tr>
+    {/each}
+  </table>
+
   <div id="utilities">
     <label for="showPlusOnes">Show PlusOnes:</label>
     <input type="checkbox" id="showPlusOnes" bind:checked={showPlus} />
